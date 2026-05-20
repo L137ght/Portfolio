@@ -149,9 +149,10 @@ img { display: block; max-width: 100%; }
 .intro-copy, .outro-copy { width: min(1080px, 100%); }
 
 .eyebrow {
-  margin: 0 0 16px; font-size: 15.6px; font-weight: 800;
+  margin: 0 0 16px; padding-top: 10px; font-size: 15.6px; font-weight: 800;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--accent, #f4a8d6);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--accent, #f4a8d6) 28%, transparent);
 }
 
 /* --- Intro & Outro copy --- */
@@ -709,7 +710,20 @@ img { display: block; max-width: 100%; }
     height: calc(100vh - 210px);
     margin-top: 0;
     align-items: start;
-    padding-top: 8px;
+    padding-top: 4px;
+  }
+
+  .grid-carousel {
+    justify-content: flex-start;
+    padding-top: 24px;
+  }
+
+  .showcase-stage {
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%) translate3d(0, 0, calc(var(--progress, 0) * 110px)) scale(calc(0.92 + var(--progress, 0) * 0.08));
+    width: 170px;
+    height: 265px;
   }
 
   .callout { display: none; }
@@ -721,7 +735,6 @@ img { display: block; max-width: 100%; }
   .stat-chip strong { font-size: 14px; margin-top: 4px; }
 
   .carousel-item { width: 64px; height: 94px; }
-  .showcase-stage { width: 170px; height: 265px; }
 
   .carousel-viewport {
     mask-image: linear-gradient(90deg, transparent 2%, black 12%, black 88%, transparent 98%);
