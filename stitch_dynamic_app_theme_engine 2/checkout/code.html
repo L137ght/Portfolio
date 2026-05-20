@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dbdad5",
+                        "outline": "#737971",
+                        "on-surface-variant": "#434842",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1b1c19",
+                        "surface-bright": "#fbf9f4",
+                        "on-primary-container": "#223925",
+                        "inverse-primary": "#b3ceb2",
+                        "primary-container": "#89a389",
+                        "background": "#fbf9f4",
+                        "on-primary-fixed": "#09200e",
+                        "secondary-fixed-dim": "#d4c78f",
+                        "primary-fixed-dim": "#b3ceb2",
+                        "primary": "#4c644e",
+                        "on-secondary-fixed": "#211b00",
+                        "surface-variant": "#e4e2dd",
+                        "on-tertiary-fixed-variant": "#564338",
+                        "inverse-surface": "#30312e",
+                        "secondary-container": "#f1e3a9",
+                        "tertiary": "#6f5a4f",
+                        "on-secondary-container": "#6e6436",
+                        "on-tertiary-fixed": "#271810",
+                        "on-tertiary-container": "#423026",
+                        "surface-container": "#f0eee9",
+                        "outline-variant": "#c3c8bf",
+                        "on-primary-fixed-variant": "#354c37",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#f1e3a9",
+                        "secondary": "#685e31",
+                        "tertiary-fixed": "#faddce",
+                        "on-surface": "#1b1c19",
+                        "tertiary-container": "#b1978a",
+                        "surface": "#fbf9f4",
+                        "tertiary-fixed-dim": "#ddc1b3",
+                        "primary-fixed": "#ceeacd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#4c644e",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f5f3ee",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#4f471b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "max-width": "1280px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #fbf9f4;
+        }
+        h1, h2, h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<div class="max-w-[480px] mx-auto bg-surface min-h-screen flex flex-col">
+<!-- Header Section (Focused View) -->
+<div class="flex items-center bg-surface p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-on-background flex size-12 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-on-background text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Checkout</h2>
+</div>
+<!-- Order Type Tabs (Shared Component Structure) -->
+<div class="pb-3">
+<div class="flex border-b border-outline-variant px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-on-background pb-[13px] pt-4 flex-1" href="#">
+<p class="text-on-background text-sm font-bold leading-normal tracking-[0.015em]">Pickup</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-on-surface-variant pb-[13px] pt-4 flex-1" href="#">
+<p class="text-on-surface-variant text-sm font-bold leading-normal tracking-[0.015em]">Dine-in</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-on-surface-variant pb-[13px] pt-4 flex-1" href="#">
+<p class="text-on-surface-variant text-sm font-bold leading-normal tracking-[0.015em]">Delivery</p>
+</a>
+</div>
+</div>
+<!-- Warning Alert -->
+<div class="p-4 @container">
+<div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-outline-variant bg-surface-container-low p-5 @[480px]:flex-row @[480px]:items-center">
+<div class="flex flex-col gap-1">
+<p class="text-on-background text-base font-bold leading-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" style="font-size: 20px;">info</span>
+                        Price Update
+                    </p>
+<p class="text-on-surface-variant text-sm font-normal leading-normal">Your total changed because an item price was updated.</p>
+</div>
+<a class="text-sm font-bold leading-normal tracking-[0.015em] flex items-center gap-2 text-primary" href="#">
+                    View details
+                    <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto">
+<!-- Pickup Details Section -->
+<h3 class="text-on-background text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Pickup Details</h3>
+<div class="flex items-center gap-4 bg-surface px-4 min-h-[72px] py-2">
+<div class="text-on-primary-container flex items-center justify-center rounded-xl bg-primary-container shrink-0 size-12">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-on-background text-base font-bold leading-normal line-clamp-1">Indiranagar Store</p>
+<p class="text-on-surface-variant text-sm font-normal leading-normal line-clamp-2">Pickup from here • Ready in 15 mins</p>
+</div>
+<button class="text-primary font-bold text-sm">Change</button>
+</div>
+<div class="h-4"></div>
+<!-- Payment Methods Section -->
+<h3 class="text-on-background text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Payment Methods</h3>
+<div class="px-4 space-y-3">
+<!-- UPI -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-primary bg-surface-container-lowest">
+<div class="size-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div class="flex-1">
+<p class="text-on-background font-bold text-base">UPI</p>
+<p class="text-on-surface-variant text-xs font-medium">Google Pay, PhonePe, Paytm</p>
+</div>
+<div class="size-6 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="size-3 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Card -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary-container transition-colors">
+<div class="size-10 rounded-full bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div class="flex-1">
+<p class="text-on-background font-bold text-base">Credit / Debit Card</p>
+<p class="text-on-surface-variant text-xs font-medium">Visa, Mastercard, RuPay</p>
+</div>
+<div class="size-6 rounded-full border-2 border-outline-variant"></div>
+</div>
+<!-- Wallet -->
+<div class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant hover:border-primary-container transition-colors">
+<div class="size-10 rounded-full bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div class="flex-1">
+<p class="text-on-background font-bold text-base">Wallets</p>
+<p class="text-on-surface-variant text-xs font-medium">Amazon Pay, Mobikwik</p>
+</div>
+<div class="size-6 rounded-full border-2 border-outline-variant"></div>
+</div>
+</div>
+<!-- Price Summary -->
+<div class="px-4 mt-8 mb-6">
+<div class="bg-surface-container-low rounded-2xl p-5 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm">Item Total</span>
+<span class="text-on-background font-medium">₹260.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm">Taxes &amp; Charges</span>
+<span class="text-on-background font-medium">₹38.00</span>
+</div>
+<div class="pt-3 border-t border-outline-variant flex justify-between items-center">
+<span class="text-on-background font-bold text-lg">Total Amount</span>
+<span class="text-on-background font-bold text-lg">₹298.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="p-4 bg-surface border-t border-outline-variant pb-8">
+<button class="w-full bg-primary text-on-primary h-14 rounded-full font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                Place Order — ₹298
+                <span class="material-symbols-outlined">keyboard_arrow_right</span>
+</button>
+</div>
+</div>
+</body></html>

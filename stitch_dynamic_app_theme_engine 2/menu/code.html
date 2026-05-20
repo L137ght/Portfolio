@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Menu - Pure Cane</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-dim": "#dbdad5",
+                "outline": "#737971",
+                "on-surface-variant": "#434842",
+                "on-error-container": "#93000a",
+                "on-background": "#1b1c19",
+                "surface-bright": "#fbf9f4",
+                "on-primary-container": "#223925",
+                "inverse-primary": "#b3ceb2",
+                "primary-container": "#89a389",
+                "background": "#fbf9f4",
+                "on-primary-fixed": "#09200e",
+                "secondary-fixed-dim": "#d4c78f",
+                "primary-fixed-dim": "#b3ceb2",
+                "primary": "#4c644e",
+                "on-secondary-fixed": "#211b00",
+                "surface-variant": "#e4e2dd",
+                "on-tertiary-fixed-variant": "#564338",
+                "inverse-surface": "#30312e",
+                "secondary-container": "#f1e3a9",
+                "tertiary": "#6f5a4f",
+                "on-secondary-container": "#6e6436",
+                "on-tertiary-fixed": "#271810",
+                "on-tertiary-container": "#423026",
+                "surface-container": "#f0eee9",
+                "outline-variant": "#c3c8bf",
+                "on-primary-fixed-variant": "#354c37",
+                "surface-container-highest": "#e4e2dd",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed": "#f1e3a9",
+                "secondary": "#685e31",
+                "tertiary-fixed": "#faddce",
+                "on-surface": "#1b1c19",
+                "tertiary-container": "#b1978a",
+                "surface": "#fbf9f4",
+                "tertiary-fixed-dim": "#ddc1b3",
+                "primary-fixed": "#ceeacd",
+                "surface-container-lowest": "#ffffff",
+                "on-error": "#ffffff",
+                "surface-container-high": "#eae8e3",
+                "error": "#ba1a1a",
+                "on-primary": "#ffffff",
+                "surface-tint": "#4c644e",
+                "inverse-on-surface": "#f2f1ec",
+                "on-secondary": "#ffffff",
+                "surface-container-low": "#f5f3ee",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed-variant": "#4f471b"
+            },
+            "fontFamily": {
+                "headline-md": ["Manrope", "sans-serif"],
+                "body-md": ["DM Sans", "sans-serif"],
+                "label-sm": ["DM Sans", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<div class="relative flex min-h-screen w-full flex-col bg-background max-w-[480px] mx-auto shadow-2xl">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background/95 backdrop-blur-md">
+<div class="flex items-center p-4 justify-between">
+<div class="text-on-surface flex size-12 shrink-0 items-center cursor-pointer" data-icon="ArrowLeft" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-on-surface text-lg font-bold leading-tight tracking-[-0.015em] flex-1 font-headline-md">Menu</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex size-12 cursor-pointer items-center justify-center rounded-full bg-transparent text-on-surface">
+<div class="text-on-surface" data-icon="ShoppingCart" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Search Field -->
+<div class="px-4 py-2">
+<label class="flex flex-col w-full h-12">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-surface-container overflow-hidden">
+<div class="text-on-surface-variant flex items-center justify-center pl-4" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full border-none bg-transparent focus:ring-0 text-on-surface placeholder:text-on-surface-variant px-4 pl-2 text-base font-normal" placeholder="Search drinks, flavors, and combos"/>
+</div>
+</label>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-3 px-4 py-4 overflow-x-auto">
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-primary px-6 transition-colors">
+<p class="text-on-primary text-sm font-bold">All</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-container-high px-6 hover:bg-surface-dim transition-colors">
+<p class="text-on-surface text-sm font-medium">Classic</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-container-high px-6 hover:bg-surface-dim transition-colors">
+<p class="text-on-surface text-sm font-medium">Fruit Blends</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-container-high px-6 hover:bg-surface-dim transition-colors">
+<p class="text-on-surface text-sm font-medium">Boba Fusion</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-container-high px-6 hover:bg-surface-dim transition-colors">
+<p class="text-on-surface text-sm font-medium">Wellness</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center rounded-full bg-surface-container-high px-6 hover:bg-surface-dim transition-colors">
+<p class="text-on-surface text-sm font-medium">Combos</p>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-1 px-4 pb-24">
+<h3 class="text-on-surface text-[22px] font-bold leading-tight tracking-[-0.015em] pb-5 pt-4 font-headline-md">Sugarcane Classics</h3>
+<div class="flex flex-col gap-6">
+<!-- Product Card: Classic Cane Fresh -->
+<div class="flex gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/20 transition-all">
+<div class="size-28 shrink-0 overflow-hidden rounded-xl bg-surface-variant">
+<img class="h-full w-full object-cover" data-alt="A macro photograph of a glass of freshly pressed sugarcane juice with droplets of condensation on the glass. The liquid is a vibrant pale green, sitting on a minimalist white stone surface with soft morning sunlight filtering through, creating an organic and refreshing aesthetic with sage and wheat tones. High-end food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATk617VkZ6CNIKDfDqL5RZl4Eb1Oued6nCxXZjKv33O1DsKVBryBWMuC4jhmjzfEq93q5TH8EVzVIQw6StG5SsHx73R4G_S1cq6jpEnnvy-fC8dhRk8hYmMf4wsp5MrwNHzE0etHDW5JVmY9t_DC9XvBN_URp5gJO7ER7Dara3fSPiR9sB_9ceXQa2XmUTyslmePxCiNPsvNkrBjn9awQU2mI6blloiUSKjMrE7lJ0fu_kHNqu6i2M6XJ1vRzGyJqK57OaJk2c7DTd"/>
+</div>
+<div class="flex flex-1 flex-col justify-between py-1">
+<div>
+<h4 class="text-on-surface font-bold text-lg font-headline-md">Classic Cane Fresh</h4>
+<p class="text-on-surface-variant text-sm line-clamp-2">100% pure cold-pressed raw sugarcane juice with a hint of lemon.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-primary font-bold text-lg">₹79</span>
+<button class="flex h-10 items-center justify-center rounded-full bg-primary px-4 text-on-primary font-bold text-sm">
+                                Add
+                            </button>
+</div>
+</div>
+</div>
+<!-- Product Card: Mint Cane Cooler -->
+<div class="flex gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 transition-all">
+<div class="size-28 shrink-0 overflow-hidden rounded-xl bg-surface-variant">
+<img class="h-full w-full object-cover" data-alt="A refreshing green beverage garnished with fresh mint leaves and a slice of lime. The drink is served in a tall, minimalist ribbed glass. The background is a soft, blurred organic garden setting with earthy terracotta and sage green colors, emphasizing a natural and healthy lifestyle. The lighting is diffused and airy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDmepaZprnekYwSin44hClSZS4iQyg_rXBmFokGKAdMBVWXe0G8XKX2sJzNZJ7i_PpxRLFoetCY5VweXjfP4l9u-ZcT9ubynmbiniVHu7EXkbQRetOkUH0zOvuE9jiG1z3EKsCPkMzrgS71gkPM7_T0nuBQLiDeFEyuec72IvLleof2yEn5Me8nG6Fls8E2_qSS4LgiMEzKNrRvh685EcYmo4zSf2RlCqnqYKwy_5VZBAS-u3mJS_4UfwAbpjbu9HYDA8sFqkvvLya"/>
+</div>
+<div class="flex flex-1 flex-col justify-between py-1">
+<div>
+<h4 class="text-on-surface font-bold text-lg font-headline-md">Mint Cane Cooler</h4>
+<p class="text-on-surface-variant text-sm line-clamp-2">Refreshing garden mint muddled with fresh cane juice and lime.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-primary font-bold text-lg">₹99</span>
+<button class="flex h-10 items-center justify-center rounded-full bg-primary px-4 text-on-primary font-bold text-sm">
+                                Add
+                            </button>
+</div>
+</div>
+</div>
+<!-- Product Card: Mango Cane Crush (Unavailable) -->
+<div class="flex gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 opacity-70 grayscale-[0.5]">
+<div class="size-28 shrink-0 overflow-hidden rounded-xl bg-surface-variant relative">
+<img class="h-full w-full object-cover" data-alt="A vibrant yellow mango and sugarcane blend served in a modern glass cup. The image uses a warm, sun-drenched lighting scheme with a clean, high-contrast background of natural textures. The color palette features rich golden yellows and soft canvas neutrals, evoking a premium and organic fruit experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMQePS2ViZ6djSyowT7oRvSmO7okUmaQpXecngyjXuN1UxqVB8-Q5_56ObCFtjeti1dB1-8m8xGtGEbvFTZsxa_-n8WuU2AcCbvkIYjboROs17r0KkvAnhNdBmgucNhJOSPk3ss83kn0D2zB6JIg_UUNMzUXkchVakD2f01f0odHPPkWu0xJ2FCxkackdngaI2SMiNBMaGpsb5drPXz5fkp9PPDYE6KBBLu9OYUK_40YNysE3TWyvoUfizVjaDyCKCkh0zCmhLtafy"/>
+<div class="absolute inset-0 flex items-center justify-center bg-background/60 backdrop-blur-[2px]">
+<span class="text-[10px] font-bold text-on-surface uppercase tracking-widest text-center px-2">Unavailable</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col justify-between py-1">
+<div>
+<h4 class="text-on-surface font-bold text-lg font-headline-md">Mango Cane Crush</h4>
+<p class="text-on-surface-variant text-sm line-clamp-2">Seasonal Alphonso mango pulp swirled with chilled cane juice.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-on-surface-variant font-bold text-lg">₹129</span>
+<span class="text-error text-xs font-bold font-label-sm">Sold Out</span>
+</div>
+</div>
+</div>
+<!-- Product Card: Kiwi Cane Spark -->
+<div class="flex gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 transition-all">
+<div class="size-28 shrink-0 overflow-hidden rounded-xl bg-surface-variant">
+<img class="h-full w-full object-cover" data-alt="A bright green kiwi fruit beverage with visible seeds and fruit chunks, served in a crystal clear glass. Minimalist aesthetic with a neutral beige and sage green background. The lighting is bright and clean, emphasizing the fresh, organic textures of the fruit and the cold-pressed clarity of the juice." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHPpxKmoFD18eSLuqhBrSyvzKeJa7iFEs7dD3PE5AW7OrA-KrGuqkQdBv_UI1DAknbJOCzBX7FFtOmFOP_CwadJVbrfLgKD2D90zN5eCYyH3Nm_Av-CW12YDRVz4LcDFrEfBkvFOta6RjeKKVBDONB_A8VokpiYhyIagSBjeVJs7HDaSDw-EJGP0oDUxaf9rUFK-XlMSLP3UE71wJG_JxkfjobyjUXNvrYG0fVJryZESmHqpR0mtExRytchD53lbCg4sVxhSJ0-zVC"/>
+</div>
+<div class="flex flex-1 flex-col justify-between py-1">
+<div>
+<h4 class="text-on-surface font-bold text-lg font-headline-md">Kiwi Cane Spark</h4>
+<p class="text-on-surface-variant text-sm line-clamp-2">Zesty kiwi fruit chunks paired with sweet sugarcane and ginger.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-primary font-bold text-lg">₹139</span>
+<button class="flex h-10 items-center justify-center rounded-full bg-primary px-4 text-on-primary font-bold text-sm">
+                                Add
+                            </button>
+</div>
+</div>
+</div>
+<!-- Product Card: Fusion Boba Cane -->
+<div class="flex gap-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/30 transition-all">
+<div class="size-28 shrink-0 overflow-hidden rounded-xl bg-surface-variant">
+<img class="h-full w-full object-cover" data-alt="A modern boba tea cup containing light green sugarcane juice with dark, chewy pearls at the bottom. The drink is photographed against a clean, architectural concrete background with soft shadows. The color theme is sophisticated, using deep mocha for the pearls and sage green for the liquid, reflecting an efficient and healthy urban lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC29PMs3AXRyQbWMKhUClPQ0NVP3ZX1fyCIoSBQsJkfRUqV6LmV11ijXuB4huzncl3L30-Ho0ebTQ7vY4l0hp3Svb5oiXBJ6AB_W_rxmWQML7DRlcnwPsHfHMLxZ4S8PHslKAcmdFa_CZ0bUPbdelH9AX0AlHFdwaUyd-9_UOpXAEv9MOzoeCuU77hr1e2KiJqrDLS8VNx7pgDNbEsiY6oGOsdsAT4UuiyH1d7-iCYuyb74k_ArxrRnLtRHUva2dSRnijk-ZWZSxIJM"/>
+</div>
+<div class="flex flex-1 flex-col justify-between py-1">
+<div>
+<h4 class="text-on-surface font-bold text-lg font-headline-md">Fusion Boba Cane</h4>
+<p class="text-on-surface-variant text-sm line-clamp-2">Our signature cane juice with honey-soaked boba pearls.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="text-primary font-bold text-lg">₹149</span>
+<button class="flex h-10 items-center justify-center rounded-full bg-primary px-4 text-on-primary font-bold text-sm">
+                                Add
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Shared Bottom Navigation -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] z-50 border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex gap-2 px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="Coffee" data-size="24px" data-weight="fill">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_cafe</span>
+</div>
+<p class="text-xs font-bold leading-normal tracking-[0.015em]">Menu</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="Receipt" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Orders</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="User" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

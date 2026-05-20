@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Npire | Ethereum Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#3b494b",
+                    "on-tertiary": "#003824",
+                    "surface-dim": "#0e1321",
+                    "secondary": "#d0bcff",
+                    "on-secondary-container": "#c4abff",
+                    "surface-container-high": "#252a39",
+                    "on-primary": "#00363a",
+                    "surface": "#0e1321",
+                    "on-surface": "#dee2f6",
+                    "surface-tint": "#00dbe9",
+                    "inverse-surface": "#dee2f6",
+                    "inverse-on-surface": "#2b303f",
+                    "surface-container-lowest": "#090e1c",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "outline": "#849495",
+                    "on-surface-variant": "#b9cacb",
+                    "inverse-primary": "#006970",
+                    "primary-fixed": "#7df4ff",
+                    "surface-container": "#1a1f2e",
+                    "primary-container": "#00f0ff",
+                    "surface-bright": "#343948",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-container-low": "#161b2a",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#d8ffe7",
+                    "on-primary-container": "#006970",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-secondary": "#3c0091",
+                    "surface-variant": "#303444",
+                    "secondary-fixed": "#e9ddff",
+                    "error-container": "#93000a",
+                    "error": "#ffb4ab",
+                    "secondary-container": "#571bc1",
+                    "tertiary-container": "#65f2b5",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-container": "#006d4a",
+                    "primary": "#dbfcff",
+                    "on-primary-fixed": "#002022",
+                    "primary-fixed-dim": "#00dbe9",
+                    "on-background": "#dee2f6",
+                    "surface-container-highest": "#303444",
+                    "background": "#0e1321",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed": "#23005c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Sora"],
+                    "headline-lg-mobile": ["Sora"],
+                    "headline-lg": ["Sora"],
+                    "body-sm": ["Inter"],
+                    "label-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .primary-glow {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+        }
+        .chart-container {
+            height: 320px;
+            position: relative;
+        }
+        .gradient-mesh {
+            background: radial-gradient(circle at 50% -20%, rgba(0, 219, 233, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 0% 100%, rgba(87, 27, 193, 0.1) 0%, transparent 40%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen gradient-mesh pb-24">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5 shadow-[0_0_15px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16"><div class="flex items-center gap-2"><button class="p-2 -ml-2 hover:bg-white/5 rounded-full transition-colors active:scale-95 duration-200"><span class="material-symbols-outlined text-primary-fixed">arrow_back</span></button><img alt="Npire Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujUDXF2N_yZOcMyHCtPQ0M756Bwo0tuCf5Jc-uQXTOjzYcY37wXsPDf-wFutlV4solz3ldAkXS3nFIHw4QJpNNne83xc7pZha0ZFmSA03Udbf3h3zThEtchIAQVM4NSpp-cC_fzrEwnRaL6xjzg1RKFwr7wYtIAoEcP6h3aeJ4PcCHCpFrR7tgZywm3Gif0RnuvOJfDNOSRSL6M2WeDfUmrDrLkGV9tvSyEhUWxHwAju_5fudJB8okSg2m4"/><h1 class="font-bold text-primary-fixed tracking-widest text-[24px]" style="font-family: 'Geostar Fill', serif; text-shadow: 0 0 15px rgba(0, 240, 255, 0.7), 0 0 5px rgba(0, 240, 255, 0.4);">Buy Asset</h1></div><div class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed">security</span><span class="material-symbols-outlined text-on-surface-variant">account_balance_wallet</span></div></header>
+<main class="pt-24 px-margin-mobile max-w-container-max mx-auto space-y-6">
+<!-- Asset Hero -->
+<section class="flex flex-col items-center justify-center py-4">
+<div class="w-16 h-16 mb-4 rounded-full glass-card p-3 flex items-center justify-center border-primary-container/20">
+<img alt="ETH Logo" class="w-full h-full object-contain" data-alt="A high-resolution 3D render of the Ethereum logo floating in a dark, digital void. The crystal-like structure of the diamond logo refracts cyan and indigo light, casting soft prismatic glows. The background features a subtle, glowing data mesh, maintaining a clean and professional Web3 aesthetic with sharp focus and deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm19H1Zk70EbxTAnMVDzjTD95x3WBitFVOvc6t2iS1ZXERd29NImtk_vmiv7C_bXWNDECBY-1Q9aX-TRgIVEltNdewTLN1psfP_-bR1wA5ImZ37ZYi0_nJ_7TZqV_pZPFW3CBiv0vgFYZD5lv81fH-h4MX50Wa4QXTwd8oJhKZAp_cxqfTUjrsGpFfl3L9hhCXDlNpHdRaiBI56BAZQ7J8QaTjWqnPmpAVA_waKlIbLWEGmKKY7pqXj7SC4licJ9BxRu6YdA0x_pPK"/>
+</div>
+<div class="text-center">
+<div class="flex items-baseline justify-center gap-2">
+<span class="font-headline-xl text-headline-xl text-primary">$2,482.15</span>
+<span class="font-label-mono text-label-mono text-tertiary-fixed-dim bg-on-tertiary/20 px-2 py-0.5 rounded-full">+4.28%</span>
+</div>
+<p class="font-label-mono text-on-surface-variant uppercase tracking-widest mt-1">ETH / USD • 24H Change</p>
+</div>
+</section>
+<!-- Chart Section -->
+<div class="glass-card rounded-xl p-4 overflow-hidden relative">
+<!-- Time Filters -->
+<div class="flex justify-between items-center mb-6">
+<div class="flex bg-surface-container-low rounded-lg p-1">
+<button class="px-4 py-1.5 rounded-md font-label-mono text-label-mono bg-primary-container/20 text-primary-fixed">1H</button>
+<button class="px-4 py-1.5 rounded-md font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors">1D</button>
+<button class="px-4 py-1.5 rounded-md font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors">1W</button>
+<button class="px-4 py-1.5 rounded-md font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors">1M</button>
+<button class="px-4 py-1.5 rounded-md font-label-mono text-label-mono text-on-surface-variant hover:text-primary-fixed transition-colors">1Y</button>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant">fullscreen</button>
+</div>
+<!-- Visualization Canvas -->
+<div class="chart-container flex flex-col justify-end">
+<!-- Mock Price Lines -->
+<svg class="w-full h-48 overflow-visible" preserveaspectratio="none" viewbox="0 0 400 100">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00f0ff" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#00f0ff" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 80 Q 50 20, 100 60 T 200 40 T 300 70 T 400 30 V 100 H 0 Z" fill="url(#chartGradient)"></path>
+<path d="M0 80 Q 50 20, 100 60 T 200 40 T 300 70 T 400 30" fill="none" stroke="#00f0ff" stroke-width="2"></path>
+<!-- Current Price Indicator -->
+<circle cx="400" cy="30" fill="#00f0ff" r="4"></circle>
+<circle cx="400" cy="30" fill="#00f0ff" fill-opacity="0.2" r="10">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="8;14;8"></animate>
+</circle>
+</svg>
+<!-- Chart Labels -->
+<div class="flex justify-between mt-4 border-t border-white/5 pt-2">
+<span class="font-label-mono text-on-surface-variant">09:00</span>
+<span class="font-label-mono text-on-surface-variant">12:00</span>
+<span class="font-label-mono text-on-surface-variant">15:00</span>
+<span class="font-label-mono text-on-surface-variant">18:00</span>
+<span class="font-label-mono text-on-surface-variant">NOW</span>
+</div>
+</div>
+</div>
+<!-- Asset Statistics Bento Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="glass-card rounded-xl p-4 flex flex-col gap-1">
+<span class="font-label-mono text-on-surface-variant uppercase text-[10px] tracking-widest">Market Cap</span>
+<span class="font-body-md font-bold text-primary-fixed">$298.4B</span>
+</div>
+<div class="glass-card rounded-xl p-4 flex flex-col gap-1">
+<span class="font-label-mono text-on-surface-variant uppercase text-[10px] tracking-widest">Volume (24H)</span>
+<span class="font-body-md font-bold text-primary-fixed">$14.2B</span>
+</div>
+<div class="glass-card rounded-xl p-4 flex flex-col gap-1">
+<span class="font-label-mono text-on-surface-variant uppercase text-[10px] tracking-widest">Circulating</span>
+<span class="font-body-md font-bold text-primary-fixed">120.2M</span>
+</div>
+<div class="glass-card rounded-xl p-4 flex flex-col gap-1">
+<span class="font-label-mono text-on-surface-variant uppercase text-[10px] tracking-widest">All-time High</span>
+<span class="font-body-md font-bold text-primary-fixed">$4,878.26</span>
+</div>
+</div>
+<!-- Action Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<button class="bg-primary-container text-on-primary-container font-headline-lg-mobile py-4 rounded-xl font-bold flex items-center justify-center gap-2 primary-glow active:scale-95 duration-200">
+<span class="material-symbols-outlined">swap_vert</span>
+                Swap ETH
+            </button>
+<button class="border border-primary-container/30 text-primary-fixed font-headline-lg-mobile py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary-container/5 active:scale-95 duration-200">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                Buy More
+            </button>
+</div>
+<!-- Security Badge Section -->
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 border-tertiary-fixed/10">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/10 flex items-center justify-center text-tertiary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<h4 class="font-body-md font-bold text-tertiary-fixed">Npire Vault Active</h4>
+<p class="text-body-sm text-on-surface-variant">Asset secured with multi-sig encryption</p>
+</div>
+</div>
+</main>
+<!-- Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-low/90 backdrop-blur-lg flex justify-around items-center px-4 py-3 pb-safe border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.5)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center bg-primary-container/20 text-primary-fixed rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-mono text-label-mono mt-1">Wallet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-mono text-label-mono mt-1">History</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-label-mono text-label-mono mt-1">Swap</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-mono text-label-mono mt-1">Settings</span>
+</div>
+</nav>
+<script>
+        // Simple interactivity for time filters
+        const buttons = document.querySelectorAll('.bg-surface-container-low button');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('bg-primary-container/20', 'text-primary-fixed'));
+                buttons.forEach(b => b.classList.add('text-on-surface-variant'));
+                btn.classList.add('bg-primary-container/20', 'text-primary-fixed');
+                btn.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

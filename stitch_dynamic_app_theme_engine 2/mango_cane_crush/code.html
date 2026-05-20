@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=DM+Sans:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dbdad5",
+                        "outline": "#737971",
+                        "on-surface-variant": "#434842",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1b1c19",
+                        "surface-bright": "#fbf9f4",
+                        "on-primary-container": "#223925",
+                        "inverse-primary": "#b3ceb2",
+                        "primary-container": "#89a389",
+                        "background": "#fbf9f4",
+                        "on-primary-fixed": "#09200e",
+                        "secondary-fixed-dim": "#d4c78f",
+                        "primary-fixed-dim": "#b3ceb2",
+                        "primary": "#4c644e",
+                        "on-secondary-fixed": "#211b00",
+                        "surface-variant": "#e4e2dd",
+                        "on-tertiary-fixed-variant": "#564338",
+                        "inverse-surface": "#30312e",
+                        "secondary-container": "#f1e3a9",
+                        "tertiary": "#6f5a4f",
+                        "on-secondary-container": "#6e6436",
+                        "on-tertiary-fixed": "#271810",
+                        "on-tertiary-container": "#423026",
+                        "surface-container": "#f0eee9",
+                        "outline-variant": "#c3c8bf",
+                        "on-primary-fixed-variant": "#354c37",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#f1e3a9",
+                        "secondary": "#685e31",
+                        "tertiary-fixed": "#faddce",
+                        "on-surface": "#1b1c19",
+                        "tertiary-container": "#b1978a",
+                        "surface": "#fbf9f4",
+                        "tertiary-fixed-dim": "#ddc1b3",
+                        "primary-fixed": "#ceeacd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#4c644e",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f5f3ee",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#4f471b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Manrope", "sans-serif"],
+                        "body-md": ["DM Sans", "sans-serif"],
+                        "label-sm": ["DM Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf9f4;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Main Container -->
+<main class="max-w-[480px] mx-auto bg-surface min-h-screen pb-32 relative shadow-2xl shadow-tertiary/5">
+<!-- Shared Component: TopAppBar / Product Hero -->
+<div class="relative flex h-auto w-full flex-col bg-neutral-50 group/design-root overflow-x-hidden" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+<div class="flex items-center bg-neutral-50 p-4 pb-2 justify-between">
+<div class="text-[#131513] flex size-12 shrink-0 items-center cursor-pointer" data-icon="ArrowLeft" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-[#131513] text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Customization</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#131513] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<div class="text-[#131513]" data-icon="Heart" data-size="24px" data-weight="regular">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+</button>
+</div>
+</div>
+<div class="@container">
+<div class="@[480px]:px-4 @[480px]:py-3">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden bg-neutral-50 @[480px]:rounded-lg min-h-80" data-alt="A lush and vibrant close-up photograph of a refreshing Mango Sugarcane juice served in a tall, condensation-beaded glass. The background is a soft, sun-drenched outdoor organic farm setting with green leaves and warm natural lighting. The drink has a rich, golden yellow hue, garnished with a sprig of fresh green mint. The overall aesthetic is clean, modern, and appetizing, consistent with a premium health-conscious brand." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBxF4EFVNSrCdeQVVjCuvDADV_anU1j0vTGCQmSDHON6EcOjyeCOQenVc6aGEC9jFxHMi8VCLUXbljXW6qtZStVMFazshn1iM1OfYJS35950DyLTxuWTwQoONBLr9eeZrlBHcrgMGf_HDVC_C3Z0xG1b4FtHA6Z7mafOKJdURXcst7ezfbkAPQDzjzphlxYpDTZF8brRu3HVeig6pGNhfwr47dwI2Ajy4O9-7FBwXeutJWi1Ao2DSUobiNJayh-RIE-D_fZidgHhr5");'>
+</div>
+</div>
+</div>
+<h1 class="text-[#131513] tracking-light text-[32px] font-bold leading-tight px-4 text-left pb-3 pt-6">Mango Cane Crush</h1>
+<h2 class="text-[#131513] text-lg font-bold leading-tight tracking-[-0.015em] px-4 text-left pb-2 pt-4">₹129</h2>
+<p class="text-[#131513] text-base font-normal leading-normal pb-3 pt-1 px-4">A refreshing blend of fresh sugarcane juice and smooth mango flavor.</p>
+<div class="h-1 bg-surface-container-low mx-4 rounded-full mt-4"></div>
+</div>
+<!-- Customization Sections -->
+<div class="px-4 py-6 space-y-8">
+<!-- Size Selection (Validation State Active) -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-on-background font-bold text-lg">Select Size</h3>
+<span class="text-error font-label-sm text-[10px] uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                        Required
+                    </span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="size" type="radio"/>
+<div class="flex flex-col items-center justify-center p-4 border-2 border-outline-variant rounded-xl peer-checked:border-primary peer-checked:bg-primary-container/10 transition-all">
+<span class="material-symbols-outlined text-primary mb-1">local_drink</span>
+<span class="font-bold text-on-surface">Regular</span>
+<span class="text-sm text-on-surface-variant">350ml</span>
+</div>
+</label>
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="size" type="radio"/>
+<div class="flex flex-col items-center justify-center p-4 border-2 border-error/40 rounded-xl hover:border-error peer-checked:border-primary peer-checked:bg-primary-container/10 transition-all bg-error-container/5">
+<span class="material-symbols-outlined text-primary mb-1">glass_cup</span>
+<span class="font-bold text-on-surface">Large</span>
+<span class="text-sm text-on-surface-variant">+₹40</span>
+</div>
+</label>
+</div>
+<p class="text-error text-xs mt-2 font-medium">Please select a size to proceed</p>
+</section>
+<!-- Sweetness -->
+<section>
+<h3 class="text-on-background font-bold text-lg mb-4">Sweetness Level</h3>
+<div class="flex flex-wrap gap-2">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="sweetness" type="radio"/>
+<span class="px-6 py-2 rounded-full border border-outline-variant peer-checked:bg-secondary-container peer-checked:border-secondary text-sm font-medium transition-colors">Regular</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="sweetness" type="radio"/>
+<span class="px-6 py-2 rounded-full border border-outline-variant peer-checked:bg-secondary-container peer-checked:border-secondary text-sm font-medium transition-colors">Less</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="sweetness" type="radio"/>
+<span class="px-6 py-2 rounded-full border border-outline-variant peer-checked:bg-secondary-container peer-checked:border-secondary text-sm font-medium transition-colors">No extra</span>
+</label>
+</div>
+</section>
+<!-- Add Extras -->
+<section>
+<h3 class="text-on-background font-bold text-lg mb-4">Add Extras</h3>
+<div class="space-y-3">
+<label class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant cursor-pointer">
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-on-surface font-medium">Boba pearls</span>
+</div>
+<span class="text-on-surface-variant font-bold">+₹25</span>
+</label>
+<label class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant cursor-pointer">
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-on-surface font-medium">Mint boost</span>
+</div>
+<span class="text-on-surface-variant font-bold">+₹15</span>
+</label>
+<label class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant cursor-pointer">
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-on-surface font-medium">Chia seeds</span>
+</div>
+<span class="text-on-surface-variant font-bold">+₹20</span>
+</label>
+</div>
+</section>
+<!-- Special Instructions -->
+<section>
+<h3 class="text-on-background font-bold text-lg mb-2">Special Instructions</h3>
+<p class="text-sm text-on-surface-variant mb-3">Any allergies or preferences? Let us know.</p>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-4 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-outline/50 min-h-[100px]" placeholder="E.g. No ice, extra cold..."></textarea>
+</section>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-surface/80 backdrop-blur-md border-t border-surface-variant p-4 z-50">
+<div class="flex items-center gap-4">
+<!-- Quantity Selector -->
+<div class="flex items-center bg-surface-container-highest rounded-full p-1 h-12">
+<button class="w-10 h-10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-8 text-center font-bold text-on-surface">1</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Add to Cart Button -->
+<button class="flex-1 h-12 bg-primary text-white font-bold rounded-full flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-colors shadow-lg shadow-primary/20">
+<span>Add to Cart</span>
+<span class="opacity-40">•</span>
+<span>₹129</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

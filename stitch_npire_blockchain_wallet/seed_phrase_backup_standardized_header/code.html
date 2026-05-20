@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Npire - Secure Your Wallet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#003824",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-container-highest": "#303444",
+                        "outline-variant": "#3b494b",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-tertiary-container": "#006d4a",
+                        "on-secondary": "#3c0091",
+                        "on-tertiary-fixed": "#002113",
+                        "outline": "#849495",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "background": "#0e1321",
+                        "primary-container": "#00f0ff",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-container-low": "#161b2a",
+                        "on-surface-variant": "#b9cacb",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#002022",
+                        "inverse-primary": "#006970",
+                        "primary": "#dbfcff",
+                        "primary-fixed": "#7df4ff",
+                        "surface-bright": "#343948",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#e9ddff",
+                        "surface-dim": "#0e1321",
+                        "on-secondary-fixed": "#23005c",
+                        "on-primary-container": "#006970",
+                        "inverse-surface": "#dee2f6",
+                        "primary-fixed-dim": "#00dbe9",
+                        "secondary-container": "#571bc1",
+                        "on-secondary-container": "#c4abff",
+                        "secondary": "#d0bcff",
+                        "surface-container": "#1a1f2e",
+                        "tertiary-container": "#65f2b5",
+                        "on-primary": "#00363a",
+                        "on-surface": "#dee2f6",
+                        "on-error": "#690005",
+                        "tertiary": "#d8ffe7",
+                        "surface-container-high": "#252a39",
+                        "on-background": "#dee2f6",
+                        "inverse-on-surface": "#2b303f",
+                        "surface-tint": "#00dbe9",
+                        "surface-container-lowest": "#090e1c",
+                        "surface-variant": "#303444",
+                        "surface": "#0e1321"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Sora"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .security-blur {
+            filter: blur(8px);
+            transition: filter 0.3s ease;
+        }
+        .security-blur.revealed {
+            filter: blur(0);
+        }
+        .cyan-glow {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5 shadow-[0_0_15px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16"><div class="flex items-center gap-2"><button class="p-2 -ml-2 hover:bg-white/5 rounded-full transition-colors active:scale-95 duration-200"><span class="material-symbols-outlined text-primary-fixed">arrow_back</span></button><img alt="Npire Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujUDXF2N_yZOcMyHCtPQ0M756Bwo0tuCf5Jc-uQXTOjzYcY37wXsPDf-wFutlV4solz3ldAkXS3nFIHw4QJpNNne83xc7pZha0ZFmSA03Udbf3h3zThEtchIAQVM4NSpp-cC_fzrEwnRaL6xjzg1RKFwr7wYtIAoEcP6h3aeJ4PcCHCpFrR7tgZywm3Gif0RnuvOJfDNOSRSL6M2WeDfUmrDrLkGV9tvSyEhUWxHwAju_5fudJB8okSg2m4"/><h1 class="font-bold text-primary-fixed tracking-widest text-[24px]" style="font-family: 'Geostar Fill', serif; text-shadow: 0 0 15px rgba(0, 240, 255, 0.7), 0 0 5px rgba(0, 240, 255, 0.4);">Npire</h1></div><div class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed">security</span><span class="material-symbols-outlined text-on-surface-variant">account_balance_wallet</span></div></header>
+<main class="pt-24 pb-32 px-margin-mobile max-w-container-max mx-auto md:px-margin-desktop">
+<!-- Content Header -->
+<section class="mb-10 text-center md:text-left max-w-2xl">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary-fixed mb-4 md:font-headline-lg md:text-headline-lg">Secure Your Wallet</h2>
+<p class="font-body-md text-on-surface-variant">Write down these 12 words in order and keep them in a safe place. This is the only way to recover your wallet.</p>
+</section>
+<!-- Warning Box -->
+<div class="glass-panel border-error/20 rounded-xl p-6 mb-8 flex items-start gap-4">
+<div class="bg-error-container/20 p-2 rounded-lg text-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-semibold mb-1">Never share your seed phrase.</p>
+<p class="font-body-sm text-on-surface-variant">Anyone with these words can steal your funds. Npire employees will NEVER ask for this phrase.</p>
+</div>
+</div>
+<!-- Seed Phrase Container -->
+<div class="relative group">
+<div class="absolute inset-0 z-10 glass-panel rounded-2xl flex flex-col items-center justify-center cursor-pointer transition-opacity duration-300" id="blur-overlay" onclick="revealPhrase()">
+<span class="material-symbols-outlined text-primary-fixed text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">visibility_off</span>
+<span class="font-label-mono text-label-mono text-primary-fixed uppercase tracking-widest">Click to Reveal Phrase</span>
+</div>
+<div class="security-blur grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 glass-panel rounded-2xl p-6 md:p-8" id="phrase-grid">
+<!-- 12 Word Cards -->
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">01</span>
+<span class="font-label-mono text-on-surface text-body-md">crypto</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">02</span>
+<span class="font-label-mono text-on-surface text-body-md">galaxy</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">03</span>
+<span class="font-label-mono text-on-surface text-body-md">safety</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">04</span>
+<span class="font-label-mono text-on-surface text-body-md">nebula</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">05</span>
+<span class="font-label-mono text-on-surface text-body-md">vault</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">06</span>
+<span class="font-label-mono text-on-surface text-body-md">matrix</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">07</span>
+<span class="font-label-mono text-on-surface text-body-md">proton</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">08</span>
+<span class="font-label-mono text-on-surface text-body-md">cipher</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">09</span>
+<span class="font-label-mono text-on-surface text-body-md">orbit</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">10</span>
+<span class="font-label-mono text-on-surface text-body-md">quartz</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">11</span>
+<span class="font-label-mono text-on-surface text-body-md">lunar</span>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-3 rounded-lg flex items-center gap-3">
+<span class="font-label-mono text-primary-fixed/40">12</span>
+<span class="font-label-mono text-on-surface text-body-md">zenith</span>
+</div>
+</div>
+</div>
+<!-- Copy Button -->
+<div class="mt-6 flex justify-center md:justify-end">
+<button class="flex items-center gap-2 px-6 py-2 rounded-xl text-primary-fixed border border-primary-fixed/20 hover:bg-primary-container/10 transition-all active:scale-95 duration-150 font-label-mono text-label-mono uppercase tracking-widest" onclick="copyPhrase()">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+                Copy to Clipboard
+            </button>
+</div>
+</main>
+<!-- Fixed Bottom Actions -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-low/90 backdrop-blur-lg border-t border-white/10 px-margin-mobile py-6 z-50 md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<button class="w-full bg-primary-container text-on-primary-fixed font-bold py-4 rounded-xl cyan-glow hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                I have written it down
+                <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Decorative Background Elements -->
+<div class="fixed top-0 right-0 w-[500px] h-[500px] bg-primary-container/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+<div class="fixed bottom-0 left-0 w-[300px] h-[300px] bg-secondary-container/5 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+<script>
+        function revealPhrase() {
+            const overlay = document.getElementById('blur-overlay');
+            const grid = document.getElementById('phrase-grid');
+            
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                grid.classList.add('revealed');
+            }, 300);
+        }
+
+        function copyPhrase() {
+            const words = ["crypto", "galaxy", "safety", "nebula", "vault", "matrix", "proton", "cipher", "orbit", "quartz", "lunar", "zenith"];
+            const text = words.join(' ');
+            
+            // Simple visual feedback for copy
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> COPIED!';
+                btn.classList.add('bg-primary-container/20');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('bg-primary-container/20');
+                }, 2000);
+            });
+        }
+    </script>
+</body></html>

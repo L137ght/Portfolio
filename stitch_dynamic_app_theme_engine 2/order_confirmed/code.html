@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dbdad5",
+                        "outline": "#737971",
+                        "on-surface-variant": "#434842",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1b1c19",
+                        "surface-bright": "#fbf9f4",
+                        "on-primary-container": "#223925",
+                        "inverse-primary": "#b3ceb2",
+                        "primary-container": "#89a389",
+                        "background": "#fbf9f4",
+                        "on-primary-fixed": "#09200e",
+                        "secondary-fixed-dim": "#d4c78f",
+                        "primary-fixed-dim": "#b3ceb2",
+                        "primary": "#4c644e",
+                        "on-secondary-fixed": "#211b00",
+                        "surface-variant": "#e4e2dd",
+                        "on-tertiary-fixed-variant": "#564338",
+                        "inverse-surface": "#30312e",
+                        "secondary-container": "#f1e3a9",
+                        "tertiary": "#6f5a4f",
+                        "on-secondary-container": "#6e6436",
+                        "on-tertiary-fixed": "#271810",
+                        "on-tertiary-container": "#423026",
+                        "surface-container": "#f0eee9",
+                        "outline-variant": "#c3c8bf",
+                        "on-primary-fixed-variant": "#354c37",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#f1e3a9",
+                        "secondary": "#685e31",
+                        "tertiary-fixed": "#faddce",
+                        "on-surface": "#1b1c19",
+                        "tertiary-container": "#b1978a",
+                        "surface": "#fbf9f4",
+                        "tertiary-fixed-dim": "#ddc1b3",
+                        "primary-fixed": "#ceeacd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#4c644e",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f5f3ee",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#4f471b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "max-width": "1280px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md-mobile": ["Manrope"],
+                        "body-lg": ["DM Sans"],
+                        "label-sm": ["DM Sans"],
+                        "display-lg-mobile": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["DM Sans"],
+                        "display-lg": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Main Wrapper -->
+<div class="relative flex min-h-screen w-full flex-col bg-background overflow-x-hidden">
+<!-- Minimal Focused Header -->
+<header class="flex items-center justify-between px-margin-mobile py-4 lg:px-margin-desktop">
+<button class="flex items-center justify-center h-12 w-12 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex-grow text-center">
+<h2 class="font-headline-md-mobile lg:font-headline-md text-on-surface">Order Success</h2>
+</div>
+<div class="w-12"></div> <!-- Spacer for centering -->
+</header>
+<!-- Content Area -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile py-12 max-w-lg mx-auto w-full text-center">
+<!-- Success Visual -->
+<div class="relative mb-8">
+<!-- Decorative Glow Background -->
+<div class="absolute inset-0 bg-primary/10 blur-3xl rounded-full scale-150"></div>
+<!-- Main Success Icon Container -->
+<div class="relative z-10 flex h-32 w-32 items-center justify-center rounded-full bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined !text-[64px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Typography Section -->
+<div class="space-y-4 mb-10">
+<h1 class="font-display-lg-mobile lg:font-display-lg text-on-background">Payment successful!</h1>
+<p class="font-body-lg text-on-surface-variant max-w-xs mx-auto">
+                    Your Sweet Crusheez order has been placed. We're getting your cold-pressed energy ready!
+                </p>
+<div class="inline-block px-4 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-sm uppercase tracking-widest">
+                    Order #SCZ-10428
+                </div>
+</div>
+<!-- Image Card (Subtle Branding) -->
+<div class="w-full aspect-video rounded-xl overflow-hidden mb-12 shadow-sm border border-outline-variant/30">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover" data-alt="A lush and vibrant close-up of fresh green sugarcanes being cold-pressed into a sparkling glass of juice. The scene is illuminated by warm, natural morning sunlight, highlighting the moisture and organic texture of the plants. The overall aesthetic is clean, minimalist, and refreshing, following the brand's organic modernism style with soft earth tones and a high-key light mode feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOPkOB94pufkSiwcMZaHhEukHPVOOE38dWcOdQ5KKJUGj8ieDnm9S7E4oSfe22ECeMI-lP-wG4T0S3KxhVY507sEUqkXLl7gUmvBTnz2t85Y5bbzSOsBSpM0LZG_jVbeTsAOBQJNQ-Vf9mJqZzNq4Q-JWjpXIcB1vkFiUmPFg_Wo4IKhm0SaCMQii_fo6FFte83cbd8uKHL-gT5G6mp0DSuV9loAZoYHu11OugKzMwQZHNh7V5fqX0y8teUg1wsmYO8W7fj8O9TJw_');">
+</div>
+</div>
+<!-- CTAs -->
+<div class="flex flex-col w-full gap-4">
+<button class="flex items-center justify-center h-12 w-full rounded-full bg-primary text-on-primary font-bold transition-transform active:scale-95 shadow-md">
+                    Track Order
+                    <span class="material-symbols-outlined ml-2" data-icon="local_shipping">local_shipping</span>
+</button>
+<button class="flex items-center justify-center h-12 w-full rounded-full bg-surface-container-high text-primary font-bold border border-outline-variant transition-colors hover:bg-surface-dim">
+                    Back to Home
+                    <span class="material-symbols-outlined ml-2" data-icon="house">house</span>
+</button>
+</div>
+</main>
+<!-- Footer / Safety Space -->
+<footer class="py-8 text-center">
+<p class="font-label-sm text-outline">THANK YOU FOR CHOOSING ORGANIC ENERGY</p>
+</footer>
+</div>
+<!-- Exclusion Logic: Payment Status is a process screen, shared BottomNavBar is excluded per rules. -->
+</body></html>

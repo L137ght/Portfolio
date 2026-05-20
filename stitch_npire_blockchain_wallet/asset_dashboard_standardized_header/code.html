@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Npire Wallet - Assets</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#3b494b",
+                    "on-tertiary": "#003824",
+                    "surface-dim": "#0e1321",
+                    "secondary": "#d0bcff",
+                    "on-secondary-container": "#c4abff",
+                    "surface-container-high": "#252a39",
+                    "on-primary": "#00363a",
+                    "surface": "#0e1321",
+                    "on-surface": "#dee2f6",
+                    "surface-tint": "#00dbe9",
+                    "inverse-surface": "#dee2f6",
+                    "inverse-on-surface": "#2b303f",
+                    "surface-container-lowest": "#090e1c",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "outline": "#849495",
+                    "on-surface-variant": "#b9cacb",
+                    "inverse-primary": "#006970",
+                    "primary-fixed": "#7df4ff",
+                    "surface-container": "#1a1f2e",
+                    "primary-container": "#00f0ff",
+                    "surface-bright": "#343948",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-container-low": "#161b2a",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#d8ffe7",
+                    "on-primary-container": "#006970",
+                    "on-primary-fixed-variant": "#004f54",
+                    "on-secondary": "#3c0091",
+                    "surface-variant": "#303444",
+                    "secondary-fixed": "#e9ddff",
+                    "error-container": "#93000a",
+                    "error": "#ffb4ab",
+                    "secondary-container": "#571bc1",
+                    "tertiary-container": "#65f2b5",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-container": "#006d4a",
+                    "primary": "#dbfcff",
+                    "on-primary-fixed": "#002022",
+                    "primary-fixed-dim": "#00dbe9",
+                    "on-background": "#dee2f6",
+                    "surface-container-highest": "#303444",
+                    "background": "#0e1321",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-secondary-fixed": "#23005c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Sora"],
+                    "headline-lg-mobile": ["Sora"],
+                    "headline-lg": ["Sora"],
+                    "body-sm": ["Inter"],
+                    "label-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-border {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1321;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 240, 255, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(85, 22, 190, 0.05) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5 shadow-[0_0_15px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16 w-full"><div class="flex items-center gap-2">
+<button class="p-2 -ml-2 hover:bg-white/5 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary-fixed">arrow_back</span>
+</button>
+<img alt="Npire Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujUDXF2N_yZOcMyHCtPQ0M756Bwo0tuCf5Jc-uQXTOjzYcY37wXsPDf-wFutlV4solz3ldAkXS3nFIHw4QJpNNne83xc7pZha0ZFmSA03Udbf3h3zThEtchIAQVM4NSpp-cC_fzrEwnRaL6xjzg1RKFwr7wYtIAoEcP6h3aeJ4PcCHCpFrR7tgZywm3Gif0RnuvOJfDNOSRSL6M2WeDfUmrDrLkGV9tvSyEhUWxHwAju_5fudJB8okSg2m4"/>
+<h1 class="font-bold text-primary-fixed tracking-widest text-[24px]" style="font-family: 'Geostar Fill', serif; text-shadow: 0 0 15px rgba(0, 240, 255, 0.7), 0 0 5px rgba(0, 240, 255, 0.4);">Npire</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed">security</span>
+<span class="material-symbols-outlined text-on-surface-variant">account_balance_wallet</span>
+</div></header>
+<main class="pt-24 px-4 max-w-container-max mx-auto space-y-6">
+<!-- Total Balance Section -->
+<section class="glass-card rounded-2xl p-6 text-center space-y-2 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-fixed/5 to-transparent pointer-events-none"></div>
+<p class="font-label-mono text-on-surface-variant uppercase tracking-widest text-label-mono">Total Balance</p>
+<h2 class="font-headline-xl text-headline-xl text-primary">$42,881.43</h2>
+<div class="flex items-center justify-center gap-2 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="font-label-mono text-label-mono">+4.2% (+$1,732.12)</span>
+</div>
+</section>
+<!-- Quick Action Bar -->
+<section class="grid grid-cols-4 gap-3">
+<button class="glass-card flex flex-col items-center justify-center py-4 rounded-xl active:scale-95 transition-transform border-primary-fixed/20 hover:border-primary-fixed/40">
+<span class="material-symbols-outlined text-primary-fixed mb-1" data-icon="send">send</span>
+<span class="font-label-mono text-label-mono">Send</span>
+</button>
+<button class="glass-card flex flex-col items-center justify-center py-4 rounded-xl active:scale-95 transition-transform border-primary-fixed/20 hover:border-primary-fixed/40">
+<span class="material-symbols-outlined text-primary-fixed mb-1" data-icon="call_received">call_received</span>
+<span class="font-label-mono text-label-mono">Receive</span>
+</button>
+<button class="glass-card flex flex-col items-center justify-center py-4 rounded-xl active:scale-95 transition-transform border-primary-fixed/20 hover:border-primary-fixed/40">
+<span class="material-symbols-outlined text-primary-fixed mb-1" data-icon="swap_horiz">swap_horiz</span>
+<span class="font-label-mono text-label-mono">Swap</span>
+</button>
+<button class="bg-primary-container text-on-primary-container flex flex-col items-center justify-center py-4 rounded-xl active:scale-95 transition-transform shadow-[0_0_20px_rgba(0,240,255,0.3)]">
+<span class="material-symbols-outlined mb-1" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-label-mono text-label-mono font-bold">Buy</span>
+</button>
+</section>
+<!-- Assets List -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Assets</h3>
+<button class="text-primary-fixed font-label-mono text-label-mono hover:underline">Manage</button>
+</div>
+<div class="space-y-3">
+<!-- Asset Card: Ethereum -->
+<div class="glass-card p-4 rounded-2xl flex items-center justify-between group hover:bg-white/5 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-white/10 group-hover:border-primary-fixed/50 transition-colors">
+<img alt="ETH" class="w-8 h-8" data-alt="A futuristic, stylized 3D icon of the Ethereum logo rendered in a translucent crystalline material with cyan and purple light refraction. The background is a dark deep navy blue with subtle bokeh effects of glowing particles. The aesthetic is clean, professional, and cryptographic, fitting a high-end Web3 interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDasorkJmcRsGEmVcOiFJTK7wpwORZmUHXLmYvl1JNXJjv3zViq1469Ok30clAQI9_rdAv_mDEzHpQnnlh-BA2iLB4to7p6SVkfnL3CjlqPTGbrcqIlTzkxbbP-iJbAyx8IL6kayHBkxaK7Ex4a9nHDlEIhbWznguDssZCFLjkruADoasO3WBXT7pYQbhm9ZO7MRdt1Dx0pYXGip0CVuQWkZBaXLlGPsFHs1ntk19D34XLQyBhtsc2KgPYqRilP8uH4DL8D_3k_I4u3"/>
+</div>
+<div>
+<p class="font-headline-lg-mobile text-[16px] font-bold text-on-surface">Ethereum</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">2.45 ETH</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-lg-mobile text-[16px] font-bold text-on-surface">$5,412.30</p>
+<p class="font-label-mono text-label-mono text-tertiary-fixed-dim">+$124.50</p>
+</div>
+</div>
+<!-- Asset Card: Npire Token -->
+<div class="glass-card p-4 rounded-2xl flex items-center justify-between group hover:bg-white/5 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center border border-primary-fixed/30 group-hover:border-primary-fixed/60 transition-colors relative">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="security">security</span>
+</div>
+<div>
+<p class="font-headline-lg-mobile text-[16px] font-bold text-on-surface">Npire Token</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">1,250.00 NPIR</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-lg-mobile text-[16px] font-bold text-on-surface">$31,250.00</p>
+<p class="font-label-mono text-label-mono text-tertiary-fixed-dim">+12.4%</p>
+</div>
+</div>
+<!-- Asset Card: USDC -->
+<div class="glass-card p-4 rounded-2xl flex items-center justify-between group hover:bg-white/5 transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center border border-white/10 group-hover:border-primary-fixed/50 transition-colors">
+<img alt="USDC" class="w-8 h-8" data-alt="A clean, minimalist 3D rendering of a stablecoin icon featuring the US Dollar symbol in a vibrant cyan glow. The coin has a polished metallic finish with sharp edges that catch the light. The setting is a dark digital vault environment with soft cyan atmospheric lighting and deep navy shadows, emphasizing security and stability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs_uU7lSuP4yODf0NpFv2RMYak7qklaLiyhtBg-9SaFBeRSv4dcNHDWsQyI8e9TP8LO6ElKCup1Z9oFb3ui-tZn6GOxbF9hXBF1tyGcT2_MSyXJXq4_VGV8SrGvUoPTPtiSwMEwkXJyJbhHNhvSZKyv7OybfDK9JmpC1vONH32cHDj7nh7ls43NkzAUg7EZu2pmyhACNioyVme1dRQWICeaUjKd-L48utLKWNWFkNd_YMNxPEvZVgECQCCpclWNovlpO4d252GApAc"/>
+</div>
+<div>
+<p class="font-headline-lg-mobile text-[16px] font-bold text-on-surface">USDC</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">6,228.35 USDC</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-lg-mobile text-[16px] font-bold text-on-surface">$6,228.35</p>
+<p class="font-label-mono text-label-mono text-on-surface-variant">$1.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Vault Security Badge -->
+<section class="glass-card p-6 rounded-2xl flex items-center gap-4 border-tertiary-container/20">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="font-headline-lg-mobile text-[14px] font-bold text-tertiary-fixed-dim">Vault Protection Active</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Your assets are secured by Npire's military-grade encryption.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container-low/90 backdrop-blur-lg border-t border-white/10 rounded-t-xl shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<button class="flex flex-col items-center justify-center bg-primary-container/20 text-primary-fixed rounded-xl px-3 py-1 active:scale-90 duration-150 transition-all">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-mono text-label-mono">Wallet</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim active:scale-90 duration-150 transition-all">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-mono text-label-mono">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim active:scale-90 duration-150 transition-all">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="font-label-mono text-label-mono">Swap</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim active:scale-90 duration-150 transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-mono text-label-mono">Settings</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for numbers pulse
+        document.addEventListener('DOMContentLoaded', () => {
+            const balanceEl = document.querySelector('h2');
+            let balanceValue = 42890.65;
+            
+            setInterval(() => {
+                const change = (Math.random() - 0.5) * 2;
+                balanceValue += change;
+                balanceEl.textContent = `$${balanceValue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            }, 3000);
+
+            // Ripple effect on action buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    let x = e.clientX - e.target.offsetLeft;
+                    let y = e.clientY - e.target.offsetTop;
+                    let ripple = document.createElement('span');
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    // Optional: add ripple styling if needed
+                });
+            });
+        });
+    </script>
+</body></html>

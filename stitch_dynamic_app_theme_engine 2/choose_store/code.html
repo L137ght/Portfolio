@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=DM+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dbdad5",
+                    "outline": "#737971",
+                    "on-surface-variant": "#434842",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1c19",
+                    "surface-bright": "#fbf9f4",
+                    "on-primary-container": "#223925",
+                    "inverse-primary": "#b3ceb2",
+                    "primary-container": "#89a389",
+                    "background": "#fbf9f4",
+                    "on-primary-fixed": "#09200e",
+                    "secondary-fixed-dim": "#d4c78f",
+                    "primary-fixed-dim": "#b3ceb2",
+                    "primary": "#4c644e",
+                    "on-secondary-fixed": "#211b00",
+                    "surface-variant": "#e4e2dd",
+                    "on-tertiary-fixed-variant": "#564338",
+                    "inverse-surface": "#30312e",
+                    "secondary-container": "#f1e3a9",
+                    "tertiary": "#6f5a4f",
+                    "on-secondary-container": "#6e6436",
+                    "on-tertiary-fixed": "#271810",
+                    "on-tertiary-container": "#423026",
+                    "surface-container": "#f0eee9",
+                    "outline-variant": "#c3c8bf",
+                    "on-primary-fixed-variant": "#354c37",
+                    "surface-container-highest": "#e4e2dd",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#f1e3a9",
+                    "secondary": "#685e31",
+                    "tertiary-fixed": "#faddce",
+                    "on-surface": "#1b1c19",
+                    "tertiary-container": "#b1978a",
+                    "surface": "#fbf9f4",
+                    "tertiary-fixed-dim": "#ddc1b3",
+                    "primary-fixed": "#ceeacd",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#eae8e3",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#4c644e",
+                    "inverse-on-surface": "#f2f1ec",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f5f3ee",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#4f471b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "max-width": "1280px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md-mobile": ["Manrope"],
+                    "body-lg": ["DM Sans"],
+                    "label-sm": ["DM Sans"],
+                    "display-lg-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["DM Sans"],
+                    "display-lg": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fbf9f4;
+            color: #1b1c19;
+            font-family: 'DM Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background overflow-x-hidden max-w-[480px] mx-auto shadow-xl ring-1 ring-black/5">
+<!-- Minimal Header for Focused View -->
+<div class="flex items-center bg-background p-4 pb-2 justify-between sticky top-0 z-10 border-b border-surface-container">
+<div class="text-on-surface flex size-12 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-on-surface text-lg font-bold leading-tight tracking-[-0.015em] flex-1 font-headline-md">Choose your Sweet Crusheez store</h2>
+</div>
+<!-- Search Section -->
+<div class="px-4 py-4 space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-on-surface-variant text-[12px] font-bold leading-none tracking-widest uppercase font-label-sm">Location Search</label>
+<div class="flex w-full h-12 items-stretch rounded-xl border border-outline-variant bg-surface-container-low focus-within:border-primary focus-within:ring-1 focus-within:ring-primary overflow-hidden transition-all duration-200">
+<div class="text-on-surface-variant flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-full border-none bg-transparent focus:ring-0 text-on-surface placeholder:text-on-surface-variant px-4 text-base font-normal leading-normal font-body-md" placeholder="Search by area, neighborhood, or PIN code"/>
+</div>
+</div>
+<!-- Current Location CTA -->
+<button class="flex w-full items-center justify-center gap-2 h-12 rounded-full bg-secondary-container text-on-secondary-container font-bold text-sm tracking-[0.015em] hover:opacity-90 transition-opacity font-label-sm">
+<span class="material-symbols-outlined">my_location</span>
+<span>Use my current location</span>
+</button>
+</div>
+<!-- Section Title -->
+<div class="px-4 py-2">
+<h3 class="text-on-surface-variant text-sm font-bold uppercase tracking-wider font-label-sm">Nearby Stores</h3>
+</div>
+<!-- Store List -->
+<div class="flex flex-col gap-3 px-4 pb-8">
+<!-- Store Card 1: Indiranagar -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-surface-container-high hover:border-primary-container transition-colors cursor-pointer group">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary-fixed shrink-0 size-12">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-on-surface text-base font-bold leading-normal font-headline-md-mobile">Indiranagar</p>
+<div class="flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-primary"></span>
+<p class="text-on-primary-container text-sm font-normal leading-normal font-body-md">Open, 12-18 mins</p>
+</div>
+</div>
+<div class="shrink-0 text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Store Card 2: Koramangala -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-surface-container-high hover:border-primary-container transition-colors cursor-pointer group">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary-fixed shrink-0 size-12">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-on-surface text-base font-bold leading-normal font-headline-md-mobile">Koramangala</p>
+<div class="flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-primary"></span>
+<p class="text-on-primary-container text-sm font-normal leading-normal font-body-md">Open</p>
+</div>
+</div>
+<div class="shrink-0 text-outline group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Store Card 3: Whitefield -->
+<div class="flex items-center gap-4 bg-surface-dim/20 p-4 rounded-xl border border-surface-container-high opacity-80 cursor-pointer group">
+<div class="text-outline flex items-center justify-center rounded-lg bg-surface-variant shrink-0 size-12">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-on-surface-variant text-base font-bold leading-normal font-headline-md-mobile">Whitefield</p>
+<div class="flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-error"></span>
+<p class="text-on-error-container text-sm font-normal leading-normal font-body-md">Closed, Opens 10:00 AM</p>
+</div>
+</div>
+<div class="shrink-0 text-outline group-hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Empty State (Optional Visibility) -->
+<div class="hidden flex flex-col items-center justify-center py-20 px-10 text-center space-y-4">
+<div class="size-20 bg-surface-container rounded-full flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-4xl">location_off</span>
+</div>
+<div class="space-y-2">
+<h4 class="text-on-surface font-bold text-lg font-headline-md-mobile">No nearby stores</h4>
+<p class="text-on-surface-variant font-body-md">We don’t see a nearby store yet. Try searching for a different area or neighborhood.</p>
+</div>
+<button class="text-primary font-bold hover:underline font-label-sm">Suggest a location</button>
+</div>
+<!-- Bottom Visual Brand Anchor -->
+<div class="mt-auto p-6 bg-surface-container-low flex flex-col items-center gap-4">
+<div class="w-24 h-24 rounded-2xl overflow-hidden shadow-lg rotate-3">
+<img class="w-full h-full object-cover" data-alt="A macro close-up of vibrant green sugar cane stalks being freshly pressed, with golden juice splashing in soft morning light. The scene is bright and organic, emphasizing freshness and natural energy. The color palette features rich sage greens and warm wheat yellows against a clean, minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACD4z4Q1e7j6xHDnh97N2vlCRZw1Qzi8GTZ4QpZVPGwJuDI_j1nQEZzFR3T5-qlhpA4J4fSCqoPvDnPMWlPdUTanwOaQyJJWq9BrukLEQ40XbqWSg6JAkKyVvEu8RmOcs2_7BljBKkrFmBildObXSxHtozMOI9zBaQfxt-W78t5A4i0SfUW-0XDwW3pQa7nNa7iAeuQMNH33Q_6hAQjrp8rhdybEoryAYzdINhZRo9HbV9VDvCquMXzgvfnJQB_Pc4yQ1wuav-tHAZ"/>
+</div>
+<p class="text-on-surface-variant text-xs font-medium text-center max-w-[240px] italic">
+                "Freshly pressed, cold-extracted, and ethically sourced from local farms to your neighborhood."
+            </p>
+</div>
+</div>
+</body></html>

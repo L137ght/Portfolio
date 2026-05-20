@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><link href="https://fonts.googleapis.com/css2?family=Geostar+Fill&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Npire - Sell Asset</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0A0F1D;
+            color: #dee2f6;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .cyan-glow {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#006970",
+                        "surface-container-low": "#161b2a",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-container": "#00f0ff",
+                        "on-primary-fixed": "#002022",
+                        "primary-fixed-dim": "#00dbe9",
+                        "on-tertiary-container": "#006d4a",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#0e1321",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "outline": "#849495",
+                        "surface": "#0e1321",
+                        "on-secondary": "#3c0091",
+                        "outline-variant": "#3b494b",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#65f2b5",
+                        "surface-container-high": "#252a39",
+                        "tertiary-fixed": "#6ffbbe",
+                        "primary-fixed": "#7df4ff",
+                        "on-surface": "#dee2f6",
+                        "on-tertiary": "#003824",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#303444",
+                        "tertiary": "#d8ffe7",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-secondary-fixed": "#23005c",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#00363a",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#2b303f",
+                        "surface-variant": "#303444",
+                        "inverse-primary": "#006970",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary-container": "#c4abff",
+                        "inverse-surface": "#dee2f6",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "background": "#0e1321",
+                        "surface-bright": "#343948",
+                        "secondary-container": "#571bc1",
+                        "surface-container": "#1a1f2e",
+                        "surface-tint": "#00dbe9",
+                        "on-background": "#dee2f6",
+                        "primary": "#dbfcff",
+                        "secondary": "#d0bcff",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-lowest": "#090e1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-xl": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Sora"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5 shadow-[0_0_15px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16"><div class="flex items-center gap-2"><button class="p-2 -ml-2 hover:bg-white/5 rounded-full transition-colors active:scale-95 duration-200"><span class="material-symbols-outlined text-primary-fixed">arrow_back</span></button><img alt="Npire Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujUDXF2N_yZOcMyHCtPQ0M756Bwo0tuCf5Jc-uQXTOjzYcY37wXsPDf-wFutlV4solz3ldAkXS3nFIHw4QJpNNne83xc7pZha0ZFmSA03Udbf3h3zThEtchIAQVM4NSpp-cC_fzrEwnRaL6xjzg1RKFwr7wYtIAoEcP6h3aeJ4PcCHCpFrR7tgZywm3Gif0RnuvOJfDNOSRSL6M2WeDfUmrDrLkGV9tvSyEhUWxHwAju_5fudJB8okSg2m4"/><h1 class="font-bold text-primary-fixed tracking-widest text-[24px]" style="font-family: 'Geostar Fill', serif; text-shadow: 0 0 15px rgba(0, 240, 255, 0.7), 0 0 5px rgba(0, 240, 255, 0.4);">Sell Ethereum</h1></div><div class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed">security</span><span class="material-symbols-outlined text-on-surface-variant">account_balance_wallet</span></div></header>
+<main class="flex-grow pt-24 pb-32 px-margin-mobile max-w-lg mx-auto w-full flex flex-col gap-6">
+<!-- Asset Balance Card -->
+<section class="glass-panel rounded-xl p-5 flex flex-col gap-1">
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Available Balance</span>
+<div class="px-2 py-0.5 rounded-full bg-primary-container/10 border border-primary-container/20">
+<span class="font-label-mono text-label-mono text-primary-fixed-dim">MAX</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-primary">2.4851</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface-variant">ETH</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline-variant">≈ $6,542.12 USD</span>
+</section>
+<!-- Amount Input Display -->
+<section class="flex flex-col items-center justify-center py-4">
+<div class="flex items-center gap-1 mb-1">
+<span class="font-headline-xl text-headline-xl text-primary" id="eth-amount">0.00</span>
+<span class="font-headline-lg text-headline-lg text-on-surface-variant">ETH</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant animate-pulse-subtle">
+<span class="material-symbols-outlined text-[18px]">swap_vert</span>
+<span class="font-body-md text-body-md" id="fiat-amount">$0.00 USD</span>
+</div>
+</section>
+<!-- Numeric Keypad -->
+<section class="grid grid-cols-3 gap-4 mb-4">
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('1')">1</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('2')">2</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('3')">3</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('4')">4</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('5')">5</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('6')">6</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('7')">7</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('8')">8</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('9')">9</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('.')">.</button>
+<button class="h-16 glass-panel rounded-xl font-headline-lg-mobile text-headline-lg-mobile flex items-center justify-center active:bg-primary-container/10 transition-colors" onclick="appendNum('0')">0</button>
+<button class="h-16 glass-panel rounded-xl flex items-center justify-center active:bg-error-container/20 transition-colors" onclick="deleteLast()">
+<span class="material-symbols-outlined">backspace</span>
+</button>
+</section>
+<!-- Transaction Breakdown -->
+<section class="glass-panel rounded-xl p-5 flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Network Fee</span>
+<span class="font-label-mono text-label-mono text-primary-fixed">0.00012 ETH (~$0.31)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Npire Service Fee (0.5%)</span>
+<span class="font-label-mono text-label-mono text-primary-fixed" id="service-fee">$0.00</span>
+</div>
+<div class="h-[1px] bg-white/5 my-1"></div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Total Payout</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary-container" id="total-payout">$0.00</span>
+</div>
+</section>
+</main>
+<!-- Confirmation Action Area -->
+<div class="fixed bottom-0 left-0 w-full p-6 bg-surface-dim/95 backdrop-blur-xl border-t border-white/10 z-50">
+<button class="w-full bg-primary-container text-on-primary-fixed font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all opacity-50 cursor-not-allowed" id="confirm-btn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Confirm Sale
+        </button>
+</div>
+<!-- Hidden Bottom Nav for top-level context (Required by JSON but suppressed for Transactional Flow as per guidelines) -->
+<!-- We skip rendering the BottomNavBar here to prioritize the Sell focus as per Shell Visibility rules -->
+<script>
+        let currentInput = "";
+        const ethPrice = 2632.14;
+        const ethDisplay = document.getElementById('eth-amount');
+        const fiatDisplay = document.getElementById('fiat-amount');
+        const serviceFeeDisplay = document.getElementById('service-fee');
+        const totalPayoutDisplay = document.getElementById('total-payout');
+        const confirmBtn = document.getElementById('confirm-btn');
+
+        function updateUI() {
+            const amount = parseFloat(currentInput) || 0;
+            ethDisplay.textContent = currentInput || "0.00";
+            
+            const usdValue = amount * ethPrice;
+            fiatDisplay.textContent = `$${usdValue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} USD`;
+            
+            const serviceFee = usdValue * 0.005;
+            serviceFeeDisplay.textContent = `$${serviceFee.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            const total = usdValue - serviceFee;
+            totalPayoutDisplay.textContent = `$${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            if (amount > 0) {
+                confirmBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                confirmBtn.classList.add('shadow-[0_0_20px_rgba(0,240,255,0.3)]');
+            } else {
+                confirmBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                confirmBtn.classList.remove('shadow-[0_0_20px_rgba(0,240,255,0.3)]');
+            }
+        }
+
+        function appendNum(num) {
+            if (num === '.' && currentInput.includes('.')) return;
+            if (currentInput.length >= 10) return;
+            currentInput += num;
+            updateUI();
+        }
+
+        function deleteLast() {
+            currentInput = currentInput.slice(0, -1);
+            updateUI();
+        }
+
+        // Initialize button state
+        updateUI();
+
+        // Interaction Feedback
+        confirmBtn.addEventListener('click', () => {
+            if (parseFloat(currentInput) > 0) {
+                confirmBtn.innerHTML = `
+                    <svg class="animate-spin h-5 w-5 mr-3 text-on-primary-fixed" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Processing...
+                `;
+                setTimeout(() => {
+                    alert('Sale initiated successfully via Npire Vault.');
+                    location.reload();
+                }, 2000);
+            }
+        });
+    </script>
+</body></html>

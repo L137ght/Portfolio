@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Origami Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --page-bg: #0b0709;
+      --page-text: #f2e7ea;
+      --page-muted: #c5afb9;
+      --page-line: rgba(255,255,255,0.08);
+      --shadow: 0 28px 90px rgba(0,0,0,0.42);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--page-text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(209, 11, 141, 0.12), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(0, 240, 255, 0.08), transparent 22%),
+        linear-gradient(180deg, #0a0608 0%, #120c10 40%, #090608 100%);
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    .intro,
+    .outro {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 8vw 5vw;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .intro::before,
+    .outro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px) 0 0 / 112px 112px,
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px) 0 0 / 112px 112px;
+      mask-image: linear-gradient(180deg, transparent, black 12%, black 88%, transparent);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .intro-copy,
+    .outro-copy {
+      width: min(1080px, 100%);
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f4a8d6;
+    }
+
+    .intro h1,
+    .outro h2,
+    .project-copy h2 {
+      margin: 0;
+      text-wrap: balance;
+      letter-spacing: -0.03em;
+    }
+
+    .intro h1,
+    .outro h2 {
+      font-family: Newsreader, Georgia, serif;
+      font-weight: 500;
+      line-height: 0.94;
+    }
+
+    .intro h1 {
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      max-width: 10ch;
+    }
+
+    .outro h2 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      max-width: 11ch;
+    }
+
+    .intro p,
+    .outro p,
+    .project-copy p,
+    .feature-list li,
+    .progress-copy,
+    .callout p,
+    .tile-note {
+      color: var(--page-muted);
+      line-height: 1.65;
+    }
+
+    .intro p,
+    .outro p {
+      max-width: 48rem;
+      font-size: clamp(1rem, 1.45vw, 1.15rem);
+      margin: 20px 0 0;
+    }
+
+    .project-section {
+      height: 320vh;
+      position: relative;
+    }
+
+    .sticky-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: clip;
+      isolation: isolate;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background:
+        radial-gradient(circle at 78% 24%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 28%),
+        radial-gradient(circle at 68% 62%, color-mix(in srgb, var(--accent-2) 16%, transparent), transparent 30%),
+        linear-gradient(180deg, color-mix(in srgb, var(--bg) 92%, #000 8%), color-mix(in srgb, var(--bg-2) 96%, #000 4%));
+    }
+
+    .sticky-stage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) 0 0 / 72px 72px,
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px) 0 0 / 72px 72px;
+      mask-image: radial-gradient(circle at 66% 45%, black, transparent 84%);
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .stage-shell {
+      position: relative;
+      z-index: 2;
+      width: min(1460px, calc(100vw - 42px));
+      height: 100%;
+      margin: 0 auto;
+      padding: 22px 0;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.78fr) minmax(560px, 1.52fr);
+      gap: clamp(24px, 3vw, 42px);
+      align-items: center;
+    }
+
+    .project-copy {
+      display: grid;
+      align-content: start;
+      gap: 16px;
+      max-height: calc(100vh - 52px);
+      padding-top: 10px;
+      transform: translate3d(calc(var(--progress, 0) * -28px), 0, 0);
+      opacity: calc(1 - var(--progress, 0) * 0.45);
+    }
+
+    .project-copy h2 {
+      font-size: clamp(2.7rem, 5.4vw, 5.2rem);
+      line-height: 0.92;
+      font-family: var(--display-font, Newsreader), sans-serif;
+      font-weight: 600;
+      max-width: 9ch;
+      color: var(--text);
+    }
+
+    .project-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 35rem;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .meta-card,
+    .progress-panel,
+    .callout,
+    .stat-chip {
+      border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+      background: color-mix(in srgb, var(--panel) 90%, transparent);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .meta-card,
+    .progress-panel { border-radius: 20px; }
+
+    .meta-card {
+      padding: 13px 14px;
+      min-height: 84px;
+    }
+
+    .meta-label,
+    .mini-label,
+    .screen-label,
+    .progress-label {
+      display: block;
+      color: var(--muted-2);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .meta-value {
+      display: block;
+      margin-top: 7px;
+      font-size: 13px;
+      line-height: 1.36;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .progress-panel {
+      padding: 13px 15px 15px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .progress-bar {
+      position: relative;
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .progress-fill {
+      position: absolute;
+      inset: 0;
+      width: calc(var(--progress, 0) * 100%);
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 56%, white 44%), var(--accent-2));
+      box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 38%, transparent);
+    }
+
+    .progress-copy {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .progress-copy strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 7px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 15px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 34%, transparent);
+    }
+
+    .scene {
+      position: relative;
+      height: min(84vh, 720px);
+      min-height: 440px;
+      display: grid;
+      place-items: center;
+      perspective: 2400px;
+      perspective-origin: 56% 44%;
+    }
+
+    .ambient-ring,
+    .ambient-ring::before,
+    .ambient-ring::after {
+      position: absolute;
+      content: "";
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .ambient-ring {
+      width: min(76%, 640px);
+      aspect-ratio: 1;
+      border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent);
+      opacity: calc(0.22 + var(--progress, 0) * 0.2);
+      transform: rotate(calc(var(--progress, 0) * 10deg));
+    }
+
+    .ambient-ring::before {
+      inset: 12%;
+      border: 1px solid color-mix(in srgb, var(--accent-2) 12%, transparent);
+    }
+
+    .ambient-ring::after {
+      inset: 26%;
+      border: 1px dashed rgba(255,255,255,0.09);
+    }
+
+    .mosaic {
+      position: relative;
+      width: min(100%, 900px);
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    .hero-frame,
+    .tile {
+      position: absolute;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+      box-shadow: var(--shadow);
+      background: color-mix(in srgb, var(--panel) 86%, transparent);
+    }
+
+    .hero-frame {
+      border-radius: 28px;
+      pointer-events: none;
+    }
+
+    .hero-frame::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.05);
+      opacity: calc(1 - var(--progress, 0) * 0.82);
+    }
+
+    .tile {
+      border-radius: 18px;
+      will-change: transform, left, top, width, height, opacity;
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), transparent 22%, transparent 72%, rgba(0,0,0,0.18));
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .tile-layer {
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .tile-layer.final {
+      background-size: cover;
+      opacity: 0;
+      transform: scale(1.02);
+      filter: saturate(1.12) contrast(1.07) brightness(1.08);
+    }
+
+    .tile-sheen {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, rgba(255,255,255,0.15), transparent 18%, transparent 45%, color-mix(in srgb, var(--accent) 12%, transparent) 72%, transparent 100%);
+      opacity: calc(0.18 + (1 - var(--progress, 0)) * 0.12);
+      pointer-events: none;
+    }
+
+    .tile-info {
+      position: absolute;
+      left: 9px;
+      right: 9px;
+      bottom: 9px;
+      padding: 9px 10px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(8,8,8,0), rgba(10,10,10,0.88) 36%, rgba(10,10,10,0.94));
+      opacity: calc(max(0, (var(--progress, 0) - 0.4) / 0.6));
+      transform: translateY(calc((1 - var(--progress, 0)) * 24px));
+      pointer-events: none;
+    }
+
+    .screen-title {
+      display: block;
+      margin-top: 5px;
+      font-size: 13px;
+      color: white;
+      font-weight: 700;
+      line-height: 1.22;
+    }
+
+    .tile-note {
+      margin-top: 4px;
+      font-size: 10px;
+      line-height: 1.34;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .callout {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      max-width: 220px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      color: var(--text);
+      z-index: 4;
+      pointer-events: none;
+      transform: translateY(calc((1 - var(--progress, 0)) * 12px));
+      opacity: calc(0.3 + var(--progress, 0) * 0.7);
+    }
+
+    .callout p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .stats-strip {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      display: flex;
+      gap: 10px;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .stat-chip {
+      min-width: 104px;
+      padding: 10px 12px;
+      border-radius: 15px;
+    }
+
+    .stat-chip strong {
+      display: block;
+      margin-top: 7px;
+      font-family: var(--display-font, Newsreader), sans-serif;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    .theme-atribe {
+      --bg: #12090e;
+      --bg-2: #1b1015;
+      --panel: rgba(35, 19, 27, 0.84);
+      --text: #f2dde4;
+      --muted: #c9b3bd;
+      --muted-2: #917884;
+      --accent: #d10b8d;
+      --accent-2: #9bd66d;
+      --display-font: Newsreader;
+    }
+
+    .theme-npire {
+      --bg: #08101d;
+      --bg-2: #10182a;
+      --panel: rgba(19, 28, 45, 0.84);
+      --text: #def1ff;
+      --muted: #a9b8d3;
+      --muted-2: #6f88a2;
+      --accent: #00e0ff;
+      --accent-2: #65f2b5;
+      --display-font: Sora;
+    }
+
+    .theme-organic {
+      --bg: #f7f3eb;
+      --bg-2: #ece4d5;
+      --panel: rgba(255, 252, 246, 0.82);
+      --text: #223325;
+      --muted: #536653;
+      --muted-2: #73806e;
+      --accent: #6f8f63;
+      --accent-2: #c9b050;
+      --display-font: Manrope;
+    }
+
+    .theme-organic .sticky-stage {
+      box-shadow: inset 0 0 0 1px rgba(34,51,37,0.05);
+    }
+
+    .theme-organic .tile-info,
+    .theme-organic .hero-frame,
+    .theme-organic .tile,
+    .theme-organic .callout,
+    .theme-organic .meta-card,
+    .theme-organic .progress-panel,
+    .theme-organic .stat-chip {
+      border-color: rgba(34,51,37,0.10);
+    }
+
+    .theme-organic .tile-info {
+      background: linear-gradient(180deg, rgba(250,247,241,0), rgba(247,243,235,0.9) 35%, rgba(247,243,235,0.96));
+    }
+
+    .theme-organic .screen-title { color: #223325; }
+    .theme-organic .tile-note { color: rgba(34,51,37,0.72); }
+
+    .section-divider {
+      min-height: 24vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1100px) {
+      .stage-shell {
+        width: min(100vw - 26px, 1080px);
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 16px;
+        padding: 18px 0;
+      }
+
+      .project-copy {
+        transform: none;
+        opacity: calc(1 - var(--progress, 0) * 0.24);
+      }
+
+      .project-copy h2 {
+        max-width: 11ch;
+        font-size: clamp(2.2rem, 6vw, 4.1rem);
+      }
+
+      .scene {
+        min-height: 520px;
+        height: min(70vh, 760px);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .intro,
+      .outro { padding: 28px 18px; }
+      .project-section { height: 300vh; }
+      .stage-shell {
+        width: calc(100vw - 16px);
+        gap: 10px;
+        padding: 10px 0 14px;
+      }
+      .project-copy {
+        gap: 12px;
+        max-height: none;
+      }
+      .project-copy h2 { font-size: clamp(2rem, 10vw, 3rem); }
+      .project-copy p { font-size: 0.92rem; }
+      .meta-card, .progress-panel { border-radius: 16px; }
+      .meta-grid { gap: 8px; }
+      .meta-card {
+        min-height: 74px;
+        padding: 11px 12px;
+      }
+      .meta-value {
+        font-size: 12px;
+        line-height: 1.3;
+      }
+      .scene {
+        min-height: 430px;
+        height: 56vh;
+      }
+      .tile { border-radius: 13px; }
+      .callout {
+        max-width: 170px;
+        padding: 9px 10px;
+      }
+      .callout p,
+      .progress-copy,
+      .tile-note { font-size: 10px; }
+      .screen-title { font-size: 11px; }
+      .stats-strip {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .stat-chip {
+        min-width: 0;
+        flex: 1;
+        padding: 8px 9px;
+      }
+      .stat-chip strong { font-size: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="intro">
+    <div class="intro-copy">
+      <p class="eyebrow">Independent design shop · web, mobile, product systems</p>
+      <h1>Interfaces that open into full product systems.</h1>
+      <p>
+        I design and build product experiences for commerce, fintech, and operations teams—shaping the landing view, the working screens behind it, and the system that connects them.
+      </p>
+      <p>
+        Capabilities include web UI design, mobile app design, database-aware product thinking, Shopify experiences, and custom internal tools.
+      </p>
+    </div>
+  </section>
+
+  <section class="project-section theme-atribe" data-project="atribe">
+    <div class="sticky-stage">
+      <div class="stage-shell">
+        <div class="project-copy">
+          <div>
+            <p class="eyebrow">Atribe · affiliate engine</p>
+            <h2>Shoppers, brands, and creators in one flow.</h2>
+          </div>
+          <p>
+            Atribe connects product discovery, creator attribution, and brand participation in one mobile-first experience.
+          </p>
+          <div class="meta-grid">
+            <article class="meta-card">
+              <span class="meta-label">Category</span>
+              <span class="meta-value">Affiliate engine<br>creator commerce platform</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Web stack</span>
+              <span class="meta-value">React, Vite, TypeScript<br>Shopify-connected web flows</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Mobile stack</span>
+              <span class="meta-value">React Native, Expo, TypeScript<br>Mobile-first onboarding and routing</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Deliverables</span>
+              <span class="meta-value">Product system design<br>iOS and Android app flows</span>
+            </article>
+          </div>
+          <div class="progress-panel">
+            <span class="progress-label">Project snapshot</span>
+            <div class="progress-bar"><span class="progress-fill"></span></div>
+            <div class="progress-copy"><span><strong data-progress-state>Hero screen</strong></span><span data-progress-value>0%</span></div>
+            <ul class="feature-list">
+              <li>Discovery, onboarding, routing, and feedback across one connected product.</li>
+              <li>Designed for shoppers, creators, and brands without losing flow clarity.</li>
+              <li>Ready to extend across web, iOS, and Android surfaces.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="scene">
+          <div class="ambient-ring"></div>
+          <div class="callout">
+            <span class="screen-label">What this project shows</span>
+            <p>A product system where one storefront action can unfold into creator discovery, attribution, and brand-side execution.</p>
+          </div>
+          <div class="stats-strip">
+            <div class="stat-chip"><span class="mini-label">Screens</span><strong>9</strong></div>
+            <div class="stat-chip"><span class="mini-label">Mode</span><strong>3D</strong></div>
+            <div class="stat-chip"><span class="mini-label">Palette</span><strong>Dark</strong></div>
+          </div>
+          <div class="mosaic"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">Next project</div>
+
+  <section class="project-section theme-npire" data-project="npire">
+    <div class="sticky-stage">
+      <div class="stage-shell">
+        <div class="project-copy">
+          <div>
+            <p class="eyebrow">Npire · web3 wallet</p>
+            <h2>A modern wallet built for clarity and trust.</h2>
+          </div>
+          <p>
+            Npire is a digital wallet concept that brings portfolio visibility, asset movement, and account security into a single product surface.
+          </p>
+          <div class="meta-grid">
+            <article class="meta-card">
+              <span class="meta-label">Category</span>
+              <span class="meta-value">Web3 wallet<br>financial product design</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Web stack</span>
+              <span class="meta-value">Flutter Web, Dart<br>dashboard, charts, wallet actions</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Mobile stack</span>
+              <span class="meta-value">Flutter, Dart, secure storage<br>transaction and backup flows</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Deliverables</span>
+              <span class="meta-value">Wallet UI system<br>web, iOS, and Android concepts</span>
+            </article>
+          </div>
+          <div class="progress-panel">
+            <span class="progress-label">Project snapshot</span>
+            <div class="progress-bar"><span class="progress-fill"></span></div>
+            <div class="progress-copy"><span><strong data-progress-state>Hero screen</strong></span><span data-progress-value>0%</span></div>
+            <ul class="feature-list">
+              <li>Portfolio, transfer, buy, sell, and backup states designed as one product family.</li>
+              <li>High-contrast data views keep the interface readable under dense financial content.</li>
+              <li>Built to translate cleanly across web, iOS, and Android wallet experiences.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="scene">
+          <div class="ambient-ring"></div>
+          <div class="callout">
+            <span class="screen-label">What this project shows</span>
+            <p>A wallet experience that balances futuristic branding with the everyday clarity users need to move and monitor assets.</p>
+          </div>
+          <div class="stats-strip">
+            <div class="stat-chip"><span class="mini-label">Screens</span><strong>9</strong></div>
+            <div class="stat-chip"><span class="mini-label">Mode</span><strong>3D</strong></div>
+            <div class="stat-chip"><span class="mini-label">Palette</span><strong>Neon</strong></div>
+          </div>
+          <div class="mosaic"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">Next project</div>
+
+  <section class="project-section theme-organic" data-project="organic">
+    <div class="sticky-stage">
+      <div class="stage-shell">
+        <div class="project-copy">
+          <div>
+            <p class="eyebrow">Organic Vitality · ordering experience</p>
+            <h2>A bright ordering flow for modern beverage brands.</h2>
+          </div>
+          <p>
+            Organic Vitality turns menu browsing, cart building, checkout, and order tracking into one clean consumer journey.
+          </p>
+          <div class="meta-grid">
+            <article class="meta-card">
+              <span class="meta-label">Category</span>
+              <span class="meta-value">Ordering experience<br>consumer mobile product</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Web UI</span>
+              <span class="meta-value">Menu browsing, offers, checkout<br>brand-led storefront design</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Mobile UX</span>
+              <span class="meta-value">Store selection, cart, tracking<br>touch-first ordering states</span>
+            </article>
+            <article class="meta-card">
+              <span class="meta-label">Deliverables</span>
+              <span class="meta-value">Branded app concept<br>iOS and Android ordering flows</span>
+            </article>
+          </div>
+          <div class="progress-panel">
+            <span class="progress-label">Project snapshot</span>
+            <div class="progress-bar"><span class="progress-fill"></span></div>
+            <div class="progress-copy"><span><strong data-progress-state>Hero screen</strong></span><span data-progress-value>0%</span></div>
+            <ul class="feature-list">
+              <li>Home, menu, cart, checkout, tracking, and confirmation in one continuous flow.</li>
+              <li>A softer visual system built for hospitality, freshness, and fast decision making.</li>
+              <li>Adaptable for branded mobile ordering products across iOS and Android.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="scene">
+          <div class="ambient-ring"></div>
+          <div class="callout">
+            <span class="screen-label">What this project shows</span>
+            <p>A consumer ordering journey that feels simple, branded, and fast from the first browse to the final confirmation.</p>
+          </div>
+          <div class="stats-strip">
+            <div class="stat-chip"><span class="mini-label">Screens</span><strong>8</strong></div>
+            <div class="stat-chip"><span class="mini-label">Mode</span><strong>3D</strong></div>
+            <div class="stat-chip"><span class="mini-label">Palette</span><strong>Light</strong></div>
+          </div>
+          <div class="mosaic"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="outro">
+    <div class="outro-copy">
+      <p class="eyebrow">Selected work</p>
+      <h2>Three products. Three tones. One design approach.</h2>
+      <p>
+        The portfolio now reads less like a technical demo and more like a concise product showcase across commerce, fintech, and consumer ordering.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const invlerp = (a, b, value) => clamp((value - a) / (b - a), 0, 1);
+      const ease = t => t * t * (3 - 2 * t);
+      const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+      const easeInOutQuint = t => t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
+
+      const progressStates = [
+        { stop: 0.18, label: 'Hero screen' },
+        { stop: 0.44, label: 'More screens appear' },
+        { stop: 0.74, label: 'Product flow expands' },
+        { stop: 1.01, label: 'Full project view' }
+      ];
+
+      const projects = {
+        atribe: {
+          heroIndex: 0,
+          assets: [
+            { title: 'Creator Route', note: 'Attribution composition and outbound routing.', image: './atribe_design_system/home_screen/screen.png' },
+            { title: 'Creator Brands', note: 'Domain identity and brand connection state.', image: './atribe_design_system/creator_dashboard/screen.png' },
+            { title: 'Discovery', note: 'Compact creator browsing with social proof.', image: './atribe_design_system/creator_discovery/screen.png' },
+            { title: 'Creator Selection', note: 'Low-friction handoff into a chosen routing path.', image: './atribe_design_system/creator_selection/screen.png' },
+            { title: 'Supporter Home', note: 'Audience-specific home view and link curation.', image: './atribe_design_system/home_supporter_view/screen.png' },
+            { title: 'Creator Home', note: 'Role-based overview focused on creator actions.', image: './atribe_design_system/home_creator_view/screen.png' },
+            { title: 'Affiliate Links', note: 'Per-brand payout mapping and creator tools.', image: './atribe_design_system/add_affiliate_links/screen.png' },
+            { title: 'Feedback', note: 'In-product sentiment capture and UX listening.', image: './atribe_design_system/feedback_ui/screen.png' },
+            { title: 'Onboarding', note: 'Intent-driven setup that frames the network.', image: './atribe_design_system/creator_onboarding_1/screen.png' }
+          ]
+        },
+        npire: {
+          heroIndex: 0,
+          assets: [
+            { title: 'Wallet Home', note: 'Balance-first landing state.', image: './stitch_npire_blockchain_wallet/asset_dashboard/screen.png' },
+            { title: 'Landing Hero', note: 'Brand-driven wallet entry composition.', image: './stitch_npire_blockchain_wallet/npire_wallet_landing_screen/screen.png' },
+            { title: 'Transfer', note: 'Funds movement with focused transaction flow.', image: './stitch_npire_blockchain_wallet/transfer_screen/screen.png' },
+            { title: 'Seed Phrase Backup', note: 'Security-first recovery workflow.', image: './stitch_npire_blockchain_wallet/seed_phrase_backup/screen.png' },
+            { title: 'Asset Graph', note: 'Market movement and performance tracking.', image: './stitch_npire_blockchain_wallet/asset_price_graph/screen.png' },
+            { title: 'Buy Asset', note: 'Acquisition flow for portfolio expansion.', image: './stitch_npire_blockchain_wallet/buy_asset_updated_typography/screen.png' },
+            { title: 'Sell Asset', note: 'Disposition state with standardized wallet chrome.', image: './stitch_npire_blockchain_wallet/sell_asset_standardized_header/screen.png' },
+            { title: 'Animated Globe', note: 'Futuristic brand system and hero motion.', image: './stitch_npire_blockchain_wallet/npire_landing_enhanced_animated_globe/screen.png' },
+            { title: 'Dashboard Header', note: 'Refined balance view and action controls.', image: './stitch_npire_blockchain_wallet/asset_dashboard_standardized_header/screen.png' }
+          ]
+        },
+        organic: {
+          heroIndex: 0,
+          assets: [
+            { title: 'Sweet Crusheez Home', note: 'Friendly storefront and featured drinks.', image: './stitch_dynamic_app_theme_engine 2/sweet_crusheez_home/screen.png' },
+            { title: 'Menu', note: 'Catalog browsing and category rhythm.', image: './stitch_dynamic_app_theme_engine 2/menu/screen.png' },
+            { title: 'Product Detail', note: 'Flavor-specific landing for a featured blend.', image: './stitch_dynamic_app_theme_engine 2/mango_cane_crush/screen.png' },
+            { title: 'Choose Store', note: 'Pickup context and fulfillment selection.', image: './stitch_dynamic_app_theme_engine 2/choose_store/screen.png' },
+            { title: 'Cart', note: 'Pre-checkout review and quantity management.', image: './stitch_dynamic_app_theme_engine 2/your_cart/screen.png' },
+            { title: 'Checkout', note: 'Purchase confirmation and payment handoff.', image: './stitch_dynamic_app_theme_engine 2/checkout/screen.png' },
+            { title: 'Track Order', note: 'Live fulfillment and delivery progress.', image: './stitch_dynamic_app_theme_engine 2/track_order/screen.png' },
+            { title: 'Order Confirmed', note: 'Completion state with reassuring closure.', image: './stitch_dynamic_app_theme_engine 2/order_confirmed/screen.png' }
+          ]
+        }
+      };
+
+      const sectionData = [...document.querySelectorAll('[data-project]')].map(section => {
+        const key = section.dataset.project;
+        const project = projects[key];
+        const mosaic = section.querySelector('.mosaic');
+        const heroFrame = document.createElement('div');
+        heroFrame.className = 'hero-frame';
+        mosaic.appendChild(heroFrame);
+
+        const tiles = project.assets.map((asset, index) => {
+          const tile = document.createElement('article');
+          tile.className = 'tile';
+          tile.innerHTML = `
+            <div class="tile-layer hero"></div>
+            <div class="tile-layer final"></div>
+            <div class="tile-sheen"></div>
+            <div class="tile-info">
+              <span class="screen-label">Screen ${index + 1}</span>
+              <strong class="screen-title">${asset.title}</strong>
+              <div class="tile-note">${asset.note}</div>
+            </div>
+          `;
+          tile.querySelector('.tile-layer.final').style.backgroundImage = `url('${asset.image}')`;
+          mosaic.appendChild(tile);
+          return tile;
+        });
+
+        return {
+          key,
+          config: project,
+          section,
+          wrapper: section,
+          mosaic,
+          heroFrame,
+          tiles,
+          progressStateEl: section.querySelector('[data-progress-state]'),
+          progressValueEl: section.querySelector('[data-progress-value]'),
+          targetProgress: 0,
+          progress: 0
+        };
+      });
+
+      function setSectionProgress(data, value) {
+        data.progress = value;
+        data.section.style.setProperty('--progress', value.toFixed(4));
+        const label = progressStates.find(item => value <= item.stop)?.label || progressStates[progressStates.length - 1].label;
+        data.progressStateEl.textContent = label;
+        data.progressValueEl.textContent = `${Math.round(value * 100)}%`;
+      }
+
+      function isActive(data) {
+        const rect = data.wrapper.getBoundingClientRect();
+        return rect.top <= 0 && rect.bottom >= window.innerHeight;
+      }
+
+      function getActiveSection() {
+        return sectionData.find(isActive) || null;
+      }
+
+      function updateLayout(data) {
+        const { mosaic, heroFrame, tiles, config, progress } = data;
+        const assets = config.assets;
+        const heroAsset = config.assets[config.heroIndex || 0];
+        const bounds = mosaic.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return;
+
+        const isMobile = window.innerWidth <= 720;
+        const sceneWidth = bounds.width;
+        const sceneHeight = bounds.height;
+        const compactDesktop = !isMobile && sceneHeight < 560;
+
+        const heroWidth = Math.min(sceneWidth * (isMobile ? 0.56 : 0.56), isMobile ? 250 : 470);
+        const heroHeight = heroWidth * 1.78;
+        const heroLeft = (sceneWidth - heroWidth) * (isMobile ? 0.5 : 0.38);
+        const heroTop = (sceneHeight - heroHeight) * (isMobile ? 0.24 : 0.11);
+
+        heroFrame.style.left = `${heroLeft - 14}px`;
+        heroFrame.style.top = `${heroTop - 14}px`;
+        heroFrame.style.width = `${heroWidth + 28}px`;
+        heroFrame.style.height = `${heroHeight + 28}px`;
+        heroFrame.style.transform = `translate3d(0,0,${40 - progress * 28}px) rotateX(${(1 - progress) * 4}deg)`;
+        heroFrame.style.opacity = `${clamp(1 - progress * 0.88, 0.06, 1)}`;
+
+        const rows = assets.length === 8 ? 2 : 3;
+        const cols = assets.length === 8 ? 4 : 3;
+        const heroTileW = heroWidth / cols;
+        const heroTileH = heroHeight / rows;
+
+        const gapX = isMobile ? 8 : 18;
+        const gapY = isMobile ? 10 : 22;
+        const layoutSlots = compactDesktop && assets.length >= 8
+          ? assets.map((_, index) => ({ x: index % Math.min(5, assets.length), y: Math.floor(index / Math.min(5, assets.length)) }))
+          : assets.map((_, index) => ({ x: index % cols, y: Math.floor(index / cols) }));
+
+        const layoutCols = compactDesktop && assets.length >= 8 ? Math.min(5, assets.length) : cols;
+        const layoutRows = compactDesktop && assets.length >= 8 ? Math.ceil(assets.length / layoutCols) : rows;
+
+        const finalTileH = compactDesktop
+          ? Math.min((sceneHeight - gapY * (layoutRows - 1) - 26) / layoutRows, 180)
+          : Math.min((sceneHeight - gapY * (layoutRows - 1) - 26) / layoutRows, assets.length === 8 ? 188 : 210);
+        const finalTileW = Math.min(finalTileH / 1.72, compactDesktop ? (sceneWidth - gapX * (layoutCols - 1) - 28) / layoutCols : 206);
+        const gridWidth = finalTileW * layoutCols + gapX * (layoutCols - 1);
+        const gridHeight = finalTileH * layoutRows + gapY * (layoutRows - 1);
+        const gridLeft = Math.max(6, (sceneWidth - gridWidth) * (isMobile ? 0.5 : compactDesktop ? 0.49 : 0.34));
+        const gridTop = Math.max(8, (sceneHeight - gridHeight) * (isMobile ? 0.16 : compactDesktop ? 0.24 : 0.07));
+
+        const spreadT = easeOutCubic(invlerp(0.18, 0.88, progress));
+        const revealT = ease(invlerp(0.22, 0.72, progress));
+        const foldWindow = invlerp(0.08, 0.46, progress);
+        const foldPulse = Math.sin(foldWindow * Math.PI) * (1 - spreadT * 0.85);
+        const heroFade = 1 - ease(invlerp(0.16, 0.52, progress));
+
+        tiles.forEach((tile, index) => {
+          const homeRow = Math.floor(index / cols);
+          const homeCol = index % cols;
+          const slot = layoutSlots[index];
+          const centerCol = (layoutCols - 1) / 2;
+          const centerRow = (layoutRows - 1) / 2;
+          const depthRank = Math.abs(slot.x - centerCol) + Math.abs(slot.y - centerRow);
+
+          const startX = heroLeft + homeCol * heroTileW;
+          const startY = heroTop + homeRow * heroTileH;
+          const endX = gridLeft + slot.x * (finalTileW + gapX);
+          const endY = gridTop + slot.y * (finalTileH + gapY);
+
+          const width = lerp(heroTileW, finalTileW, easeInOutQuint(spreadT));
+          const height = lerp(heroTileH, finalTileH, easeInOutQuint(spreadT));
+          const x = lerp(startX, endX, spreadT);
+          const y = lerp(startY, endY, spreadT);
+          const orbitX = (slot.x - centerCol) * (18 + depthRank * 10) * revealT;
+          const orbitY = (slot.y - centerRow) * (15 + depthRank * 12) * revealT;
+          const z = (depthRank * 36 + (Math.abs(slot.x - centerCol) < 0.2 && Math.abs(slot.y - centerRow) < 0.2 ? 90 : 0)) * (0.28 + revealT * 0.72);
+          const rotateY = (slot.x - centerCol) * 22 * foldPulse;
+          const rotateX = (centerRow - slot.y) * 22 * foldPulse;
+          const rotateZ = (slot.x - centerCol) * 4 * foldPulse;
+
+          tile.style.left = `${x + orbitX}px`;
+          tile.style.top = `${y + orbitY}px`;
+          tile.style.width = `${width}px`;
+          tile.style.height = `${height}px`;
+          tile.style.transform = `translate3d(0,0,${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+
+          const heroLayer = tile.querySelector('.tile-layer.hero');
+          const finalLayer = tile.querySelector('.tile-layer.final');
+          heroLayer.style.backgroundImage = `url('${heroAsset.image}')`;
+          heroLayer.style.backgroundSize = `${heroWidth}px ${heroHeight}px`;
+          heroLayer.style.backgroundPosition = `${-homeCol * heroTileW}px ${-homeRow * heroTileH}px`;
+          heroLayer.style.opacity = heroFade;
+          finalLayer.style.opacity = revealT;
+        });
+      }
+
+      function render() {
+        sectionData.forEach(data => {
+          const next = data.progress + (data.targetProgress - data.progress) * (prefersReducedMotion ? 1 : 0.16);
+          const finalValue = Math.abs(next - data.targetProgress) < 0.001 ? data.targetProgress : next;
+          setSectionProgress(data, finalValue);
+          updateLayout(data);
+        });
+        requestAnimationFrame(render);
+      }
+
+      function updateFromNativeScroll() {
+        if (!prefersReducedMotion) return;
+        sectionData.forEach(data => {
+          const rect = data.wrapper.getBoundingClientRect();
+          const total = Math.max(1, data.wrapper.offsetHeight - window.innerHeight);
+          const scrolled = clamp(-rect.top, 0, total);
+          data.targetProgress = scrolled / total;
+        });
+      }
+
+      function applyDelta(delta) {
+        const active = getActiveSection();
+        if (!active || prefersReducedMotion) return false;
+        if (delta > 0 && active.progress >= 0.999) return false;
+        if (delta < 0 && active.progress <= 0.001) return false;
+        active.targetProgress = clamp(active.targetProgress + delta, 0, 1);
+        return true;
+      }
+
+      window.addEventListener('wheel', event => {
+        const consumed = applyDelta(event.deltaY * 0.00108);
+        if (consumed) event.preventDefault();
+      }, { passive: false });
+
+      let touchY = null;
+      window.addEventListener('touchstart', event => {
+        touchY = event.touches[0]?.clientY ?? null;
+      }, { passive: true });
+
+      window.addEventListener('touchmove', event => {
+        if (touchY == null) return;
+        const currentY = event.touches[0]?.clientY ?? touchY;
+        const delta = (touchY - currentY) * 0.003;
+        const consumed = applyDelta(delta);
+        if (consumed) event.preventDefault();
+        touchY = currentY;
+      }, { passive: false });
+
+      window.addEventListener('touchend', () => {
+        touchY = null;
+      }, { passive: true });
+
+      window.addEventListener('keydown', event => {
+        const map = { ArrowDown: 0.08, PageDown: 0.12, ' ': 0.12, ArrowUp: -0.08, PageUp: -0.12 };
+        if (!(event.key in map)) return;
+        const consumed = applyDelta(map[event.key]);
+        if (consumed) event.preventDefault();
+      });
+
+      window.addEventListener('scroll', updateFromNativeScroll, { passive: true });
+      window.addEventListener('resize', () => sectionData.forEach(updateLayout));
+
+      sectionData.forEach(data => {
+        setSectionProgress(data, 0);
+        updateLayout(data);
+      });
+      updateFromNativeScroll();
+      render();
+    })();
+  </script>
+</body>
+</html>
