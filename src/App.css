@@ -244,7 +244,7 @@ img { display: block; max-width: 100%; }
 .tech-carousel-track {
   display: flex;
   gap: 10px;
-  animation: tech-drift 22s linear infinite;
+  animation: tech-drift 26.4s linear infinite;
   width: max-content;
 }
 
@@ -669,6 +669,68 @@ img { display: block; max-width: 100%; }
 @media (max-width: 1100px) {
   .splash-logo { width: min(200px, 50vw); }
 
+  .outro {
+    place-items: start;
+    align-content: start;
+    padding: 22px 68px 24px 16px;
+  }
+
+  .outro-copy {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .outro-logo {
+    position: static;
+    justify-self: center;
+    align-self: end;
+    width: min(92px, 24vw);
+    margin-top: 20px;
+    opacity: 0.9;
+  }
+
+  .capability-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .cap-card {
+    padding: 14px 14px;
+    min-height: 0;
+    gap: 8px;
+    border-radius: 18px;
+  }
+
+  .cap-label { font-size: 13px; }
+  .cap-desc { font-size: 11px; line-height: 1.45; }
+
+  .tech-carousel-wrap {
+    margin-top: 18px;
+    max-width: 100%;
+  }
+
+  .tech-carousel-label {
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+
+  .tech-carousel-viewport {
+    overflow: visible;
+    mask-image: none;
+  }
+
+  .tech-carousel-track {
+    width: 100%;
+    flex-wrap: wrap;
+    animation: none;
+    gap: 8px;
+  }
+
+  .tech-chip {
+    padding: 7px 12px;
+    font-size: 10px;
+  }
+
   .stage-shell {
     grid-template-columns: 1fr;
     gap: 0;
@@ -751,4 +813,32 @@ img { display: block; max-width: 100%; }
   .cap-desc { font-size: 10px; }
   .tech-carousel-wrap { margin-top: 28px; }
   .tech-chip { padding: 6px 12px; font-size: 10px; }
+}
+
+@media (max-width: 640px) {
+  .outro {
+    padding: 18px 64px 20px 14px;
+  }
+
+  .capability-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cap-card {
+    padding: 18px 16px;
+  }
+
+  .cap-label {
+    font-size: 14px;
+  }
+
+  .cap-desc {
+    font-size: 12px;
+  }
+
+  .outro-logo {
+    width: min(84px, 22vw);
+    margin-top: 16px;
+  }
 }
