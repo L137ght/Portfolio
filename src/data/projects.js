@@ -1,3 +1,35 @@
+const projectImageModules = import.meta.glob(
+  [
+    "../../atribe_design_system/**/*.{png,jpg,jpeg,webp,avif,gif,svg}",
+    "../../stitch_npire_blockchain_wallet/**/*.{png,jpg,jpeg,webp,avif,gif,svg}",
+    "../../stitch_dynamic_app_theme_engine 2/**/*.{png,jpg,jpeg,webp,avif,gif,svg}",
+  ],
+  {
+    eager: true,
+    import: "default",
+  },
+);
+
+function resolveAssetImage(imagePath) {
+  if (!imagePath) return imagePath;
+
+  const bundleKey = imagePath.replace(/^\.\//, "../../");
+  const resolvedImage = projectImageModules[bundleKey];
+
+  if (!resolvedImage) {
+    throw new Error(`Missing project image asset: ${imagePath}`);
+  }
+
+  return resolvedImage;
+}
+
+function withResolvedImages(assets) {
+  return assets.map((asset) => ({
+    ...asset,
+    image: resolveAssetImage(asset.image),
+  }));
+}
+
 const atribeAssets = [
   {
     title: "Creator Route",
@@ -255,7 +287,7 @@ export const projects = {
     ],
     callout:
       "A product system where one storefront action can unfold into creator discovery, attribution, and brand-side execution.",
-    assets: atribeAssets,
+    assets: withResolvedImages(atribeAssets),
     theme: "atribe",
   },
   npire: {
@@ -284,7 +316,7 @@ export const projects = {
     ],
     callout:
       "A wallet experience that balances futuristic branding with the everyday clarity users need to move and monitor assets.",
-    assets: npireAssets,
+    assets: withResolvedImages(npireAssets),
     theme: "npire",
   },
   remo: {
@@ -316,7 +348,7 @@ export const projects = {
     ],
     callout:
       "A restaurant management system that brings menu, inventory, franchise, and staff operations into one unified platform.",
-    assets: remoAssets,
+    assets: withResolvedImages(remoAssets),
     theme: "remo",
   },
 };
