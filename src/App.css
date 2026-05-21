@@ -315,7 +315,7 @@ img { display: block; max-width: 100%; }
   gap: 20px; max-height: calc(100vh - 52px); padding-top: 10px;
   transform: translate3d(calc(var(--progress, 0) * -28px), 0, 0);
   opacity: calc(1 - var(--progress, 0) * 0.45);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
 }
 
 .project-copy h2 {
@@ -325,7 +325,13 @@ img { display: block; max-width: 100%; }
   max-width: 9ch; color: var(--text); letter-spacing: -0.03em;
 }
 
-.project-copy > p { margin: 0; color: var(--muted); font-size: 1.05rem; line-height: 1.6; max-width: 32rem; }
+.project-copy > p {
+  margin: 0;
+  color: color-mix(in srgb, var(--muted) 85%, var(--text) 15%);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 32rem;
+}
 
 /* --- Meta Grid --- */
 .meta-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -368,7 +374,7 @@ img { display: block; max-width: 100%; }
   border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent);
   opacity: calc(0.18 + var(--progress, 0) * 0.22);
   transform: translate3d(0, 0, -100px) rotate(calc(var(--progress, 0) * 12deg));
-  transition: transform 0.5s ease;
+  will-change: transform, opacity;
 }
 
 /* --- Scrolling Grid Carousel --- */
@@ -385,7 +391,7 @@ img { display: block; max-width: 100%; }
   pointer-events: none;
   opacity: calc(0.1 + var(--progress, 0) * 0.85);
   transform: translate3d(0, 0, calc(-220px + var(--progress, 0) * 220px)) rotateY(calc(-8deg + var(--progress, 0) * 8deg)) rotateX(calc(4deg - var(--progress, 0) * 4deg));
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .grid-carousel-track {
@@ -494,7 +500,7 @@ img { display: block; max-width: 100%; }
   height: 480px;
   perspective: 1200px;
   -webkit-perspective: 1200px;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .showcase-card {
@@ -562,7 +568,7 @@ img { display: block; max-width: 100%; }
   z-index: 4; pointer-events: none;
   transform: translate3d(0, calc((1 - var(--progress, 0)) * 14px), 0);
   opacity: calc(0.25 + var(--progress, 0) * 0.75);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
 .callout p { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.48; }
@@ -604,8 +610,10 @@ img { display: block; max-width: 100%; }
   flex-direction: column;
   width: 100%;
   height: 100%;
-  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--slide-transition-ms, 920ms) cubic-bezier(0.2, 0.72, 0.18, 1);
   will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .slide-container {

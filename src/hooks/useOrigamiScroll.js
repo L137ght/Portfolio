@@ -1,5 +1,7 @@
 import { useRef, useEffect, useCallback } from 'react';
 
+const SECTION_TRANSITION_MS = 828;
+
 export function useOrigamiScroll(isActive) {
   const stageRef = useRef(null);
   const progressRef = useRef(0);
@@ -15,13 +17,13 @@ export function useOrigamiScroll(isActive) {
   const animateTo = useCallback((target) => {
     isAnimating.current = true;
 
-    const duration = 1200; // Perfect sync with page glide transition
+    const duration = SECTION_TRANSITION_MS;
     const start = progressRef.current;
     const startTime = performance.now();
 
     const tick = (now) => {
       const t = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+      const eased = 1 - Math.pow(1 - t, 4);
       const p = start + (target - start) * eased;
       progressRef.current = p;
       applyLayout(p);
@@ -49,4 +51,3 @@ export function useOrigamiScroll(isActive) {
 
   return { stageRef };
 }
-

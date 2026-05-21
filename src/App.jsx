@@ -4,23 +4,34 @@ import ProjectSection from './components/ProjectSection';
 import Outro from './components/Outro';
 import { projects } from './data/projects';
 
+const SLIDE_TRANSITION_MS = 828;
+
 export default function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeIndexRef = useRef(0);
   activeIndexRef.current = activeIndex;
 
   const isLocked = useRef(false);
+  const queuedIndexRef = useRef(null);
 
-  const goToSlide = useCallback((index) => {
+  const goToSlide = useCallback((index, options = {}) => {
+    const { force = false } = options;
+
     if (index < 0 || index > 4) return;
-    if (isLocked.current) return;
+    if (isLocked.current && !force) {
+      queuedIndexRef.current = index;
+      return;
+    }
+    if (index === activeIndexRef.current) return;
 
+    queuedIndexRef.current = null;
+    activeIndexRef.current = index;
     setActiveIndex(index);
     isLocked.current = true;
 
     setTimeout(() => {
       isLocked.current = false;
-    }, 1200); // 1.2-second transition lock matches the CSS slide glide animation
+    }, SLIDE_TRANSITION_MS);
   }, []);
 
   const handleWheel = useCallback((e) => {
@@ -90,6 +101,15 @@ export default function App() {
     };
   }, [handleWheel, handleTouchStart, handleTouchMove, handleKeyDown]);
 
+  const handleSlideTransitionEnd = useCallback((e) => {
+    if (e.propertyName !== 'transform') return;
+    if (queuedIndexRef.current == null || queuedIndexRef.current === activeIndexRef.current) return;
+
+    const nextIndex = queuedIndexRef.current;
+    queuedIndexRef.current = null;
+    goToSlide(nextIndex, { force: true });
+  }, [goToSlide]);
+
   const slides = [
     { type: 'intro' },
     { type: 'project', data: projects.atribe },
@@ -107,8 +127,12 @@ export default function App() {
   return (
     <div className={`portfolio-slider-viewport theme-${slides[activeIndex]?.data?.theme || 'default'}`}>
       <div 
+        onTransitionEnd={handleSlideTransitionEnd}
         className="portfolio-slider" 
-        style={{ transform: `translate3d(0, -${activeIndex * 100}vh, 0)` }}
+        style={{
+          transform: `translate3d(0, -${activeIndex * 100}vh, 0)`,
+          '--slide-transition-ms': `${SLIDE_TRANSITION_MS}ms`,
+        }}
       >
         <div className="slide-container">
           <Intro />
@@ -141,4 +165,3 @@ export default function App() {
     </div>
   );
 }
-
